@@ -1,0 +1,408 @@
+import React, { useState, useEffect, useRef } from "react";
+import {
+  Award,
+  ArrowRight,
+  Target,
+  Star,
+  Zap,
+  Play,
+  Volume2,
+  VolumeX,
+} from "lucide-react";
+
+const ServicesSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeReel, setActiveReel] = useState(null);
+  const [mutedVideos, setMutedVideos] = useState({});
+  const [isPlaying, setIsPlaying] = useState({});
+  const [hoveredStatCard, setHoveredStatCard] = useState(null);
+  const sectionRef = useRef(null);
+  const reelsContainerRef = useRef(null);
+  const videoRefs = useRef({});
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  const getColorClasses = (color) => {
+    const colorMap = {
+      indigo: {
+        bg: "from-indigo-500 to-indigo-600",
+        lightBg: "bg-indigo-50",
+        border: "border-indigo-200",
+        text: "text-indigo-600",
+        hoverBg: "hover:bg-indigo-50",
+        gradientBg: "from-indigo-50 to-indigo-100",
+        iconBg: "bg-indigo-100",
+        iconText: "text-indigo-600",
+        // Using HSLA for more subtle gradient
+        statHoverBg: "linear-gradient(135deg, hsla(238, 84%, 67%, 0.9), hsla(262, 83%, 58%, 0.9))",
+        // Darker gradient for text contrast
+        statHoverBgDark: "linear-gradient(135deg, hsla(238, 84%, 57%, 0.95), hsla(262, 83%, 48%, 0.95))",
+      },
+      purple: {
+        bg: "from-purple-500 to-purple-600",
+        lightBg: "bg-purple-50",
+        border: "border-purple-200",
+        text: "text-purple-600",
+        hoverBg: "hover:bg-purple-50",
+        gradientBg: "from-purple-50 to-purple-100",
+        iconBg: "bg-purple-100",
+        iconText: "text-purple-600",
+        // Using HSLA for more subtle gradient
+        statHoverBg: "linear-gradient(135deg, hsla(262, 83%, 58%, 0.9), hsla(285, 79%, 60%, 0.9))",
+        // Darker gradient for text contrast
+        statHoverBgDark: "linear-gradient(135deg, hsla(262, 83%, 48%, 0.95), hsla(285, 79%, 50%, 0.95))",
+      },
+      blue: {
+        bg: "from-blue-500 to-blue-600",
+        lightBg: "bg-blue-50",
+        border: "border-blue-200",
+        text: "text-blue-600",
+        hoverBg: "hover:bg-blue-50",
+        gradientBg: "from-blue-50 to-blue-100",
+        iconBg: "bg-blue-100",
+        iconText: "text-blue-600",
+        // Using HSLA for more subtle gradient
+        statHoverBg: "linear-gradient(135deg, hsla(211, 98%, 52%, 0.9), hsla(197, 96%, 48%, 0.9))",
+        // Darker gradient for text contrast
+        statHoverBgDark: "linear-gradient(135deg, hsla(211, 98%, 42%, 0.95), hsla(197, 96%, 38%, 0.95))",
+      },
+      green: {
+        bg: "from-green-500 to-green-600",
+        lightBg: "bg-green-50",
+        border: "border-green-200",
+        text: "text-green-600",
+        hoverBg: "hover:bg-green-50",
+        gradientBg: "from-green-50 to-green-100",
+        iconBg: "bg-green-100",
+        iconText: "text-green-600",
+        // Using HSLA for more subtle gradient
+        statHoverBg: "linear-gradient(135deg, hsla(142, 71%, 45%, 0.9), hsla(158, 64%, 42%, 0.9))",
+        // Darker gradient for text contrast
+        statHoverBgDark: "linear-gradient(135deg, hsla(142, 71%, 35%, 0.95), hsla(158, 64%, 32%, 0.95))",
+      },
+    };
+    return colorMap[color] || colorMap.indigo;
+  };
+
+  const serviceReels = [
+    {
+      id: 1,
+      serviceName: "Business Model",
+      videoSrc: "/public/images/service1.mp4",
+      thumbnailSrc: "/public/images/service1-thumb.jpg",
+    },
+    {
+      id: 2,
+      serviceName: "ERP Solutions",
+      videoSrc: "/public/images/service1.mp4",
+      thumbnailSrc: "/public/images/service2-thumb.jpg",
+    },
+    {
+      id: 3,
+      serviceName: "Accounting Services",
+      videoSrc: "/public/images/service1.mp4",
+      thumbnailSrc: "/public/images/thumbnail.jpg",
+    },
+    {
+      id: 4,
+      serviceName: "Digital Transformation",
+      videoSrc: "/public/images/service1.mp4",
+      thumbnailSrc: "/public/images/service4-thumb.jpg",
+    },
+    {
+      id: 5,
+      serviceName: "Strategic Consulting",
+      videoSrc: "/public/images/service1.mp4",
+      thumbnailSrc: "/public/images/service5-thumb.jpg",
+    },
+  ];
+
+  const toggleMute = (reelId, e) => {
+    e.stopPropagation();
+    const video = videoRefs.current[reelId];
+    if (video) {
+      video.muted = !video.muted;
+      setMutedVideos((prev) => ({
+        ...prev,
+        [reelId]: video.muted,
+      }));
+    }
+  };
+
+  const scrollReels = (direction) => {
+    if (reelsContainerRef.current) {
+      const scrollAmount = 350;
+      if (direction === "left") {
+        reelsContainerRef.current.scrollLeft -= scrollAmount;
+      } else {
+        reelsContainerRef.current.scrollLeft += scrollAmount;
+      }
+    }
+  };
+
+  const handleVideoHover = (reelId, isHovering) => {
+    const video = videoRefs.current[reelId];
+    if (video) {
+      if (isHovering) {
+        // Unmute and play video
+        video.muted = false;
+        setMutedVideos((prev) => ({ ...prev, [reelId]: false }));
+        video.play().catch(() => {});
+        setIsPlaying((prev) => ({ ...prev, [reelId]: true }));
+      } else {
+        // Pause the video and reset to beginning
+        video.pause();
+        video.currentTime = 0;
+        setIsPlaying((prev) => ({ ...prev, [reelId]: false }));
+      }
+    }
+    setActiveReel(isHovering ? reelId : null);
+  };
+
+  const handleVideoClick = (reelId) => {
+    const video = videoRefs.current[reelId];
+    if (video) {
+      if (isPlaying[reelId]) {
+        video.pause();
+        setIsPlaying((prev) => ({ ...prev, [reelId]: false }));
+      } else {
+        video.muted = false;
+        setMutedVideos((prev) => ({ ...prev, [reelId]: false }));
+        video.play().catch(() => {});
+        setIsPlaying((prev) => ({ ...prev, [reelId]: true }));
+      }
+    }
+  };
+
+  return (
+    <section ref={sectionRef} className="relative overflow-hidden bg-gray-50 py-4">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full filter blur-3xl opacity-40"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-blue-100 to-indigo-100 rounded-full filter blur-3xl opacity-40"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className={`text-center mb-8 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <div className="inline-flex items-center bg-white px-4 py-2 rounded-full text-sm font-medium mb-4 shadow-md">
+            <Award className="w-4 h-4 mr-2 text-indigo-600" />
+            Professional Services
+          </div>
+
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+            Management <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Consulting</span> Services
+          </h2>
+
+          <p className="text-gray-700 max-w-3xl mx-auto mb-4 text-sm">
+            Empowering SMEs with big-company operational systems at affordable prices
+          </p>
+
+          <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto"></div>
+        </div>
+
+        <div className={`mb-8 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <div className="text-center mb-4">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Services in Action</span>
+            </h3>
+            <p className="text-gray-600 max-w-2xl mx-auto text-sm">
+              Hover over any service to watch with audio
+            </p>
+          </div>
+
+          <div className="relative">
+            <button onClick={() => scrollReels("left")} className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-all">
+              <ArrowRight className="w-5 h-5 text-indigo-600 rotate-180" />
+            </button>
+
+            <button onClick={() => scrollReels("right")} className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-all">
+              <ArrowRight className="w-5 h-5 text-indigo-600" />
+            </button>
+
+            <div ref={reelsContainerRef} className="flex gap-6 overflow-x-auto pb-4 px-16 scrollbar-hide">
+              {serviceReels.map((reel) => (
+                <div key={reel.id} className="flex-shrink-0 w-80">
+                  <div 
+                    className={`bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 ${activeReel === reel.id ? "shadow-2xl scale-105" : ""}`}
+                    onMouseEnter={() => handleVideoHover(reel.id, true)}
+                    onMouseLeave={() => handleVideoHover(reel.id, false)}
+                  >
+                    <div className="relative h-96 bg-gray-900 overflow-hidden">
+                      {/* Video element - always present but visibility controlled by state */}
+                      <video 
+                        ref={(el) => (videoRefs.current[reel.id] = el)} 
+                        className={`w-full h-full object-cover transition-opacity duration-300 ${isPlaying[reel.id] ? 'opacity-100' : 'opacity-0'}`} 
+                        src={reel.videoSrc} 
+                        loop 
+                        playsInline 
+                        preload="metadata" 
+                      />
+                      
+                      {/* Thumbnail image - always present but visibility controlled by state */}
+                      <img 
+                        src={reel.thumbnailSrc} 
+                        alt={`${reel.serviceName} thumbnail`} 
+                        className={`w-full h-full object-cover transition-opacity duration-300 ${isPlaying[reel.id] ? 'opacity-0' : 'opacity-100'}`}
+                      />
+                      
+                      <div className={`absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4 transition-opacity duration-300 ${activeReel === reel.id ? "opacity-100" : "opacity-70"}`}>
+                        <div className="text-white">
+                          <h4 className="font-bold text-lg">{reel.serviceName}</h4>
+                          <span className="text-sm">{reel.duration}</span>
+                        </div>
+                      </div>
+                      
+                      {/* Play button overlay - only visible when video is not playing */}
+                      {!isPlaying[reel.id] && (
+                        <div 
+                          className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                          onClick={() => handleVideoClick(reel.id)}
+                        >
+                          <div className="bg-white/90 rounded-full p-3 transition-transform duration-300 hover:scale-110">
+                            <Play className="w-8 h-8 text-indigo-600 ml-1" />
+                          </div>
+                        </div>
+                      )}
+                      
+                      {/* Mute button - only visible when video is playing */}
+                      {isPlaying[reel.id] && (
+                        <button 
+                          onClick={(e) => toggleMute(reel.id, e)} 
+                          className="absolute top-4 right-4 bg-black/60 rounded-full p-2 hover:bg-black/80 transition-all z-10"
+                        >
+                          {mutedVideos[reel.id] ? <VolumeX className="w-5 h-5 text-white" /> : <Volume2 className="w-5 h-5 text-white" />}
+                        </button>
+                      )}
+                      
+                      {/* Audio visualization - only visible when video is playing and not muted */}
+                      {isPlaying[reel.id] && !mutedVideos[reel.id] && (
+                        <div className="absolute bottom-4 left-4 flex items-center space-x-1">
+                          {[3, 4, 5, 4, 3].map((h, i) => (
+                            <div key={i} className={`w-1 bg-green-500 rounded animate-pulse`} style={{ height: `${h * 4}px`, animationDelay: `${i * 0.1}s` }}></div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className={`bg-white rounded-2xl shadow-lg p-6 max-w-4xl mx-auto mb-8 transition-all duration-1000 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { value: "500+", label: "SMEs Transformed", Icon: Target, color: "indigo" },
+              { value: "98%", label: "Client Satisfaction", Icon: Star, color: "purple" },
+              { value: "15+", label: "Years Experience", Icon: Award, color: "blue" },
+              { value: "24/7", label: "Support", Icon: Zap, color: "green" },
+            ].map((stat, i) => {
+              const colorClasses = getColorClasses(stat.color);
+              return (
+                <div 
+                  key={i} 
+                  className="text-center group relative"
+                  style={{ transformStyle: 'preserve-3d' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(20px) rotateY(5deg) rotateX(-5deg) scale(1.05)';
+                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+                    setHoveredStatCard(i);
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(0) rotateY(0) rotateX(0) scale(1)';
+                    e.currentTarget.style.boxShadow = '';
+                    setHoveredStatCard(null);
+                  }}
+                >
+                  <div className="relative z-10 p-4 rounded-xl transition-all duration-300"
+                    style={{
+                      background: hoveredStatCard === i 
+                        ? colorClasses.statHoverBgDark 
+                        : 'transparent',
+                      transition: 'background 0.3s ease-out'
+                    }}
+                  >
+                    <div 
+                      className={`w-16 h-16 ${colorClasses.iconBg} rounded-2xl flex items-center justify-center mx-auto mb-3 transition-all duration-300 group-hover:scale-110`}
+                      style={{
+                        transformStyle: 'preserve-3d',
+                        transform: 'translateZ(15px)',
+                        boxShadow: '0 10px 20px rgba(0,0,0,0.1)',
+                        transition: 'transform 0.3s ease-out, background-color 0.3s ease-out',
+                        backgroundColor: hoveredStatCard === i ? 'rgba(255, 255, 255, 0.2)' : ''
+                      }}
+                    >
+                      <stat.Icon 
+                        className={`w-8 h-8 ${colorClasses.iconText} transition-colors duration-300`}
+                        style={{ color: hoveredStatCard === i ? '#ffffff' : '' }}
+                      />
+                    </div>
+                    <div 
+                      className={`text-2xl font-bold mb-1 transition-colors duration-300 ${
+                        hoveredStatCard === i ? 'text-white' : 'text-gray-900'
+                      }`}
+                      style={{ transform: 'translateZ(10px)' }}
+                    >
+                      {stat.value}
+                    </div>
+                    <div 
+                      className={`text-sm transition-colors duration-300 ${
+                        hoveredStatCard === i ? 'text-white' : 'text-gray-600'
+                      }`}
+                      style={{ transform: 'translateZ(5px)' }}
+                    >
+                      {stat.label}
+                    </div>
+                  </div>
+                  
+                  {/* Decorative element */}
+                  <div 
+                    className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 bg-gradient-to-br ${colorClasses.bg}`}
+                    style={{ zIndex: -1 }}
+                  ></div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 py-12 px-6 text-white rounded-2xl text-center">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">Ready to Transform Your Business?</h3>
+            <p className="text-base md:text-lg mb-6 opacity-90 max-w-3xl mx-auto">
+              Get right systems and processes in place to drive sustainable growth
+            </p>
+            <button className="bg-white text-indigo-600 px-6 py-3 rounded-full font-semibold hover:bg-indigo-50 transition-all transform hover:scale-105 inline-flex items-center shadow-lg">
+              Schedule a Consultation
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+      `}</style>
+    </section>
+  );
+};
+
+export default ServicesSection;
