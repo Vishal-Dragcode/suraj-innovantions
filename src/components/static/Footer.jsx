@@ -46,14 +46,14 @@ const Footer = () => {
               >
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a 
+              {/* <a 
                 href="https://www.tiktok.com/@suraj.innovations?_r=1&_t=ZS-91xtRALEwTp" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-700 p-3 rounded-full text-gray-300 hover:text-white hover:bg-sky-500 transition-all duration-300"
               >
                 < BsTiktok className="w-5 h-5" />
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -75,7 +75,7 @@ const Footer = () => {
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-green-400 flex-shrink-0" />
                 <a href="tel:+971547291064" className="text-gray-300 hover:text-white transition-colors text-sm">
-                  +971 54 7291064
+                  +971554801133
                 </a>
               </li>
               <li className="flex items-center space-x-3">

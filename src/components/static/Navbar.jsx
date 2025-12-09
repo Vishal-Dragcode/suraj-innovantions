@@ -97,7 +97,7 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             <div className="flex items-center">
               <Phone size={14} className="mr-1" />
-              <span>+971 54 7291064</span>
+              <span>+971554801133</span>
             </div>
             <div className="flex items-center">
               <Mail size={14} className="mr-1" />
@@ -108,9 +108,9 @@ const Navbar = () => {
             <a href="https://www.youtube.com/@SurajInnovationsFZE" className="hover:text-blue-400 transition-colors">
               <Youtube size={16} />
             </a>
-            <a href="https://www.tiktok.com/@suraj.innovations?_r=1&_t=ZS-91xtRALEwTp" className="hover:text-blue-400 transition-colors">
+            {/* <a href="https://www.tiktok.com/@suraj.innovations?_r=1&_t=ZS-91xtRALEwTp" className="hover:text-blue-400 transition-colors">
               < BsTiktok size={16} />
-            </a>
+            </a> */}
             <a
               href="https://www.linkedin.com/in/sachinbirewar/"
               className="hover:text-blue-400 transition-colors"
