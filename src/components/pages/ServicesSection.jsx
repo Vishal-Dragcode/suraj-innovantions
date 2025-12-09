@@ -212,7 +212,7 @@ const ServicesSection = () => {
                       {/* Thumbnail image */}
                       <img 
                         src={reel.thumbnailSrc} 
-                        alt={`${reel.serviceName} thumbnail`} 
+                        // alt={`${reel.serviceName} thumbnail`} 
                         className="w-full h-full object-cover"
                       />
                       
