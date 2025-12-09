@@ -1,5 +1,6 @@
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail, Youtube } from 'lucide-react';
+import { BsTiktok } from 'react-icons/bs';
 
 const Footer = () => {
   return (
@@ -22,15 +23,15 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
               <a 
-                href="https://facebook.com" 
+                href="https://www.youtube.com/@SurajInnovationsFZE" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-700 p-3 rounded-full text-gray-300 hover:text-white hover:bg-blue-600 transition-all duration-300"
               >
-                <Facebook className="w-5 h-5" />
+                <Youtube className="w-5 h-5" />
               </a>
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/surajinnovations/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-700 p-3 rounded-full text-gray-300 hover:text-white hover:bg-pink-600 transition-all duration-300"
@@ -38,7 +39,7 @@ const Footer = () => {
                 <Instagram className="w-5 h-5" />
               </a>
               <a 
-                href="https://www.linkedin.com/in/sachinbirewar/" 
+                href="https://www.linkedin.com/company/suraj-innovations-fze/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-700 p-3 rounded-full text-gray-300 hover:text-white hover:bg-blue-500 transition-all duration-300"
@@ -46,12 +47,12 @@ const Footer = () => {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a 
-                href="https://twitter.com" 
+                href="https://www.tiktok.com/@suraj.innovations?_r=1&_t=ZS-91xtRALEwTp" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-700 p-3 rounded-full text-gray-300 hover:text-white hover:bg-sky-500 transition-all duration-300"
               >
-                <Twitter className="w-5 h-5" />
+                < BsTiktok className="w-5 h-5" />
               </a>
             </div>
           </div>

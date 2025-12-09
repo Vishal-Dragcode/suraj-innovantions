@@ -8,17 +8,15 @@ import {
   Play,
   Volume2,
   VolumeX,
+  ExternalLink,
 } from "lucide-react";
 
 const ServicesSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeReel, setActiveReel] = useState(null);
-  const [mutedVideos, setMutedVideos] = useState({});
-  const [isPlaying, setIsPlaying] = useState({});
   const [hoveredStatCard, setHoveredStatCard] = useState(null);
   const sectionRef = useRef(null);
   const reelsContainerRef = useRef(null);
-  const videoRefs = useRef({});
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -103,50 +101,45 @@ const ServicesSection = () => {
     return colorMap[color] || colorMap.indigo;
   };
 
+  // Function to extract YouTube video ID from URL
+  const getYouTubeId = (url) => {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+  };
+
   const serviceReels = [
     {
       id: 1,
       serviceName: "Business Model",
-      videoSrc: "/public/images/service1.mp4",
-      thumbnailSrc: "/public/images/service1-thumb.jpg",
+      videoSrc: "https://www.youtube.com/shorts/CUh3uRStCE8",
+      thumbnailSrc: "/public/images/thumbnail.jpg",
     },
     {
       id: 2,
       serviceName: "ERP Solutions",
-      videoSrc: "/public/images/service1.mp4",
-      thumbnailSrc: "/public/images/service2-thumb.jpg",
+      videoSrc: "https://www.youtube.com/shorts/CUh3uRStCE8",
+      thumbnailSrc: "/public/images/thumbnail.jpg",
     },
     {
       id: 3,
       serviceName: "Accounting Services",
-      videoSrc: "/public/images/service1.mp4",
+      videoSrc: "https://www.youtube.com/shorts/CUh3uRStCE8",
       thumbnailSrc: "/public/images/thumbnail.jpg",
     },
     {
       id: 4,
       serviceName: "Digital Transformation",
-      videoSrc: "/public/images/service1.mp4",
-      thumbnailSrc: "/public/images/service4-thumb.jpg",
+      videoSrc: "https://www.youtube.com/shorts/CUh3uRStCE8",
+      thumbnailSrc: "/public/images/thumbnail.jpg",
     },
     {
       id: 5,
       serviceName: "Strategic Consulting",
-      videoSrc: "/public/images/service1.mp4",
-      thumbnailSrc: "/public/images/service5-thumb.jpg",
+      videoSrc: "https://www.youtube.com/shorts/CUh3uRStCE8",
+      thumbnailSrc: "/public/images/thumbnail.jpg",
     },
   ];
-
-  const toggleMute = (reelId, e) => {
-    e.stopPropagation();
-    const video = videoRefs.current[reelId];
-    if (video) {
-      video.muted = !video.muted;
-      setMutedVideos((prev) => ({
-        ...prev,
-        [reelId]: video.muted,
-      }));
-    }
-  };
 
   const scrollReels = (direction) => {
     if (reelsContainerRef.current) {
@@ -159,38 +152,9 @@ const ServicesSection = () => {
     }
   };
 
-  const handleVideoHover = (reelId, isHovering) => {
-    const video = videoRefs.current[reelId];
-    if (video) {
-      if (isHovering) {
-        // Unmute and play video
-        video.muted = false;
-        setMutedVideos((prev) => ({ ...prev, [reelId]: false }));
-        video.play().catch(() => {});
-        setIsPlaying((prev) => ({ ...prev, [reelId]: true }));
-      } else {
-        // Pause the video and reset to beginning
-        video.pause();
-        video.currentTime = 0;
-        setIsPlaying((prev) => ({ ...prev, [reelId]: false }));
-      }
-    }
-    setActiveReel(isHovering ? reelId : null);
-  };
-
-  const handleVideoClick = (reelId) => {
-    const video = videoRefs.current[reelId];
-    if (video) {
-      if (isPlaying[reelId]) {
-        video.pause();
-        setIsPlaying((prev) => ({ ...prev, [reelId]: false }));
-      } else {
-        video.muted = false;
-        setMutedVideos((prev) => ({ ...prev, [reelId]: false }));
-        video.play().catch(() => {});
-        setIsPlaying((prev) => ({ ...prev, [reelId]: true }));
-      }
-    }
+  const handleCardClick = (videoSrc) => {
+    // Open YouTube video in a new tab
+    window.open(videoSrc, '_blank');
   };
 
   return (
@@ -222,7 +186,7 @@ const ServicesSection = () => {
               Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Services in Action</span>
             </h3>
             <p className="text-gray-600 max-w-2xl mx-auto text-sm">
-              Hover over any service to watch with audio
+              Click on any service to watch on YouTube
             </p>
           </div>
 
@@ -239,65 +203,39 @@ const ServicesSection = () => {
               {serviceReels.map((reel) => (
                 <div key={reel.id} className="flex-shrink-0 w-80">
                   <div 
-                    className={`bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 ${activeReel === reel.id ? "shadow-2xl scale-105" : ""}`}
-                    onMouseEnter={() => handleVideoHover(reel.id, true)}
-                    onMouseLeave={() => handleVideoHover(reel.id, false)}
+                    className={`bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 cursor-pointer ${activeReel === reel.id ? "shadow-2xl scale-105" : ""}`}
+                    onMouseEnter={() => setActiveReel(reel.id)}
+                    onMouseLeave={() => setActiveReel(null)}
+                    onClick={() => handleCardClick(reel.videoSrc)}
                   >
                     <div className="relative h-96 bg-gray-900 overflow-hidden">
-                      {/* Video element - always present but visibility controlled by state */}
-                      <video 
-                        ref={(el) => (videoRefs.current[reel.id] = el)} 
-                        className={`w-full h-full object-cover transition-opacity duration-300 ${isPlaying[reel.id] ? 'opacity-100' : 'opacity-0'}`} 
-                        src={reel.videoSrc} 
-                        loop 
-                        playsInline 
-                        preload="metadata" 
-                      />
-                      
-                      {/* Thumbnail image - always present but visibility controlled by state */}
+                      {/* Thumbnail image */}
                       <img 
                         src={reel.thumbnailSrc} 
                         alt={`${reel.serviceName} thumbnail`} 
-                        className={`w-full h-full object-cover transition-opacity duration-300 ${isPlaying[reel.id] ? 'opacity-0' : 'opacity-100'}`}
+                        className="w-full h-full object-cover"
                       />
                       
                       <div className={`absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4 transition-opacity duration-300 ${activeReel === reel.id ? "opacity-100" : "opacity-70"}`}>
                         <div className="text-white">
                           <h4 className="font-bold text-lg">{reel.serviceName}</h4>
-                          <span className="text-sm">{reel.duration}</span>
+                          <span className="text-sm">Click to watch on YouTube</span>
                         </div>
                       </div>
                       
-                      {/* Play button overlay - only visible when video is not playing */}
-                      {!isPlaying[reel.id] && (
-                        <div 
-                          className="absolute inset-0 flex items-center justify-center cursor-pointer"
-                          onClick={() => handleVideoClick(reel.id)}
-                        >
-                          <div className="bg-white/90 rounded-full p-3 transition-transform duration-300 hover:scale-110">
-                            <Play className="w-8 h-8 text-indigo-600 ml-1" />
-                          </div>
+                      {/* Play button overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="bg-white/90 rounded-full p-3 transition-transform duration-300 hover:scale-110">
+                          <Play className="w-8 h-8 text-indigo-600 ml-1" />
                         </div>
-                      )}
+                      </div>
                       
-                      {/* Mute button - only visible when video is playing */}
-                      {isPlaying[reel.id] && (
-                        <button 
-                          onClick={(e) => toggleMute(reel.id, e)} 
-                          className="absolute top-4 right-4 bg-black/60 rounded-full p-2 hover:bg-black/80 transition-all z-10"
-                        >
-                          {mutedVideos[reel.id] ? <VolumeX className="w-5 h-5 text-white" /> : <Volume2 className="w-5 h-5 text-white" />}
-                        </button>
-                      )}
-                      
-                      {/* Audio visualization - only visible when video is playing and not muted */}
-                      {isPlaying[reel.id] && !mutedVideos[reel.id] && (
-                        <div className="absolute bottom-4 left-4 flex items-center space-x-1">
-                          {[3, 4, 5, 4, 3].map((h, i) => (
-                            <div key={i} className={`w-1 bg-green-500 rounded animate-pulse`} style={{ height: `${h * 4}px`, animationDelay: `${i * 0.1}s` }}></div>
-                          ))}
-                        </div>
-                      )}
+                      {/* YouTube indicator */}
+                      <div className="absolute top-4 right-4 bg-red-600 rounded-full p-2">
+                        <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </div>
