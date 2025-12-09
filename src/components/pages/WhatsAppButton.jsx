@@ -2,7 +2,7 @@ import React from 'react';
 import { MessageCircle, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-const WhatsAppButton = ({ phoneNumber = "+971547291064", message = "Hello, I'm interested in your services" }) => {
+const WhatsAppButton = ({ phoneNumber = " +971554801133", message = "Hello, I'm interested in your services" }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
 

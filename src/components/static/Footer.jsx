@@ -46,14 +46,14 @@ const Footer = () => {
               >
                 <Linkedin className="w-5 h-5" />
               </a>
-              {/* <a 
+              <a 
                 href="https://www.tiktok.com/@suraj.innovations?_r=1&_t=ZS-91xtRALEwTp" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-700 p-3 rounded-full text-gray-300 hover:text-white hover:bg-sky-500 transition-all duration-300"
               >
                 < BsTiktok className="w-5 h-5" />
-              </a> */}
+              </a>
             </div>
           </div>
 

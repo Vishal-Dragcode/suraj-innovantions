@@ -108,9 +108,9 @@ const Navbar = () => {
             <a href="https://www.youtube.com/@SurajInnovationsFZE" className="hover:text-blue-400 transition-colors">
               <Youtube size={16} />
             </a>
-            {/* <a href="https://www.tiktok.com/@suraj.innovations?_r=1&_t=ZS-91xtRALEwTp" className="hover:text-blue-400 transition-colors">
+            <a href="https://www.tiktok.com/@suraj.innovations?_r=1&_t=ZS-91xtRALEwTp" className="hover:text-blue-400 transition-colors">
               < BsTiktok size={16} />
-            </a> */}
+            </a>
             <a
               href="https://www.linkedin.com/in/sachinbirewar/"
               className="hover:text-blue-400 transition-colors"
