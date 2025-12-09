@@ -9,6 +9,7 @@ import {
   Volume2,
   VolumeX,
   ExternalLink,
+  Sparkles,
 } from "lucide-react";
 
 const ServicesSection = () => {
@@ -133,178 +134,219 @@ const ServicesSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-gray-50 py-4">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full filter blur-3xl opacity-40"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-blue-100 to-indigo-100 rounded-full filter blur-3xl opacity-40"></div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className={`text-center mb-8 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <div className="inline-flex items-center bg-white px-4 py-2 rounded-full text-sm font-medium mb-4 shadow-md">
-            <Award className="w-4 h-4 mr-2 text-indigo-600" />
-            Professional Services
-          </div>
-
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
-            Management <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Consulting</span> Services
-          </h2>
-
-          <p className="text-gray-700 max-w-3xl mx-auto mb-4 text-sm">
-            Empowering SMEs with big-company operational systems at affordable prices
-          </p>
-
-          <div className="w-24 h-1 bg-gradient-to-r from-indigo-600 to-purple-600 mx-auto"></div>
-        </div>
-
-        <div className={`mb-8 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <div className="text-center mb-4">
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Services in Action</span>
-            </h3>
-            <p className="text-gray-600 max-w-2xl mx-auto text-sm">
-              Hover to preview or click to watch on YouTube
+    <section 
+      ref={sectionRef}
+      className="py-12 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50"
+    >
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-10 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div className="absolute top-40 left-20 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-1/2 w-64 h-64 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div 
+            className={`text-center mb-10 transition-all duration-700 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
+            }`}
+          >
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-semibold mb-3 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Sparkles className="w-4 h-4" />
+              Professional Services
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              Management <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">Consulting</span> Services
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Empowering SMEs with big-company operational systems at affordable prices
             </p>
           </div>
 
-          <div className="relative">
-            <button onClick={() => scrollReels("left")} className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-all">
-              <ArrowRight className="w-5 h-5 text-indigo-600 rotate-180" />
-            </button>
+          {/* Services Reels Section */}
+          <div className={`mb-10 transition-all duration-700 delay-200 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            <div className="text-center mb-6">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">Services in Action</span>
+              </h3>
+              <p className="text-gray-600 max-w-2xl mx-auto text-sm">
+                Hover to preview or click to watch on YouTube
+              </p>
+            </div>
 
-            <button onClick={() => scrollReels("right")} className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-all">
-              <ArrowRight className="w-5 h-5 text-indigo-600" />
-            </button>
+            <div className="relative">
+              <button onClick={() => scrollReels("left")} className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-all">
+                <ArrowRight className="w-5 h-5 text-blue-600 rotate-180" />
+              </button>
 
-            <div ref={reelsContainerRef} className="flex gap-6 overflow-x-auto pb-4 px-16 scrollbar-hide">
-              {serviceReels.map((reel) => (
-                <div key={reel.id} className="flex-shrink-0 w-80">
-                  <div 
-                    className={`bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 cursor-pointer ${activeReel === reel.id ? "shadow-2xl scale-105" : ""}`}
-                    onMouseEnter={() => handleCardHover(reel.id, true)}
-                    onMouseLeave={() => handleCardHover(reel.id, false)}
-                    onClick={() => handleCardClick(reel.videoSrc)}
-                  >
-                    <div className="relative h-96 bg-gray-900 overflow-hidden">
-                      {/* YouTube Embed with thumbnail fallback */}
-                      {videoStates[reel.id] ? (
-                        <>
-                          <iframe
-                            ref={el => videoRefs.current[reel.id] = el}
-                            className="w-full h-full"
-                            src={`https://www.youtube.com/embed/${getYouTubeId(reel.videoSrc)}?autoplay=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${getYouTubeId(reel.videoSrc)}&enablejsapi=1`}
-                            title={reel.serviceName}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          ></iframe>
-                          
-                          {/* Sound toggle button */}
-                          <button 
-                            className="absolute bottom-4 right-4 bg-white/90 rounded-full p-2 transition-all duration-300 hover:bg-white hover:scale-110"
-                            onClick={(e) => toggleSound(reel.id, e)}
-                          >
-                            {soundEnabled[reel.id] ? (
-                              <Volume2 className="w-5 h-5 text-indigo-600" />
-                            ) : (
-                              <VolumeX className="w-5 h-5 text-gray-600" />
-                            )}
-                          </button>
-                          
-                          {/* Service name overlay */}
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                            <h4 className="font-bold text-lg text-white">{reel.serviceName}</h4>
-                            <span className="text-sm text-white/80">Click to watch on YouTube</span>
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          {/* Thumbnail image */}
-                          <img 
-                            src={reel.thumbnailSrc} 
-                            alt={`${reel.serviceName} thumbnail`} 
-                            className="w-full h-full object-cover"
-                          />
-                          
-                          <div className={`absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4 transition-opacity duration-300 ${activeReel === reel.id ? "opacity-100" : "opacity-70"}`}>
-                            <div className="text-white">
-                              <h4 className="font-bold text-lg">{reel.serviceName}</h4>
-                              <span className="text-sm">Click to watch on YouTube</span>
+              <button onClick={() => scrollReels("right")} className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-all">
+                <ArrowRight className="w-5 h-5 text-blue-600" />
+              </button>
+
+              <div ref={reelsContainerRef} className="flex gap-6 overflow-x-auto pb-4 px-16 scrollbar-hide">
+                {serviceReels.map((reel) => (
+                  <div key={reel.id} className="flex-shrink-0 w-80">
+                    <div 
+                      className={`bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 cursor-pointer ${
+                        activeReel === reel.id ? "shadow-2xl scale-105" : ""
+                      }`}
+                      onMouseEnter={() => handleCardHover(reel.id, true)}
+                      onMouseLeave={() => handleCardHover(reel.id, false)}
+                      onClick={() => handleCardClick(reel.videoSrc)}
+                    >
+                      <div className="relative h-96 bg-gray-900 overflow-hidden">
+                        {/* YouTube Embed with thumbnail fallback */}
+                        {videoStates[reel.id] ? (
+                          <>
+                            <iframe
+                              ref={el => videoRefs.current[reel.id] = el}
+                              className="w-full h-full"
+                              src={`https://www.youtube.com/embed/${getYouTubeId(reel.videoSrc)}?autoplay=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${getYouTubeId(reel.videoSrc)}&enablejsapi=1`}
+                              title={reel.serviceName}
+                              frameBorder="0"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                            ></iframe>
+                            
+                            {/* Sound toggle button */}
+                            <button 
+                              className="absolute bottom-4 right-4 bg-white/90 rounded-full p-2 transition-all duration-300 hover:bg-white hover:scale-110"
+                              onClick={(e) => toggleSound(reel.id, e)}
+                            >
+                              {soundEnabled[reel.id] ? (
+                                <Volume2 className="w-5 h-5 text-blue-600" />
+                              ) : (
+                                <VolumeX className="w-5 h-5 text-gray-600" />
+                              )}
+                            </button>
+                            
+                            {/* Service name overlay */}
+                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                              <h4 className="font-bold text-lg text-white">{reel.serviceName}</h4>
+                              <span className="text-sm text-white/80">Click to watch on YouTube</span>
                             </div>
-                          </div>
-                          
-                          {/* Play button overlay */}
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="bg-white/90 rounded-full p-3 transition-transform duration-300 hover:scale-110">
-                              <Play className="w-8 h-8 text-indigo-600 ml-1" />
+                          </>
+                        ) : (
+                          <>
+                            {/* Thumbnail image */}
+                            <img 
+                              src={reel.thumbnailSrc} 
+                              alt={`${reel.serviceName} thumbnail`} 
+                              className="w-full h-full object-cover"
+                            />
+                            
+                            <div className={`absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4 transition-opacity duration-300 ${
+                              activeReel === reel.id ? "opacity-100" : "opacity-70"
+                            }`}>
+                              <div className="text-white">
+                                <h4 className="font-bold text-lg">{reel.serviceName}</h4>
+                                <span className="text-sm">Click to watch on YouTube</span>
+                              </div>
                             </div>
-                          </div>
-                          
-                          {/* YouTube indicator */}
-                          <div className="absolute top-4 right-4 bg-red-600 rounded-full p-2">
-                            <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                            </svg>
-                          </div>
-                        </>
-                      )}
+                            
+                            {/* Play button overlay */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <div className="bg-white/90 rounded-full p-3 transition-transform duration-300 hover:scale-110">
+                                <Play className="w-8 h-8 text-blue-600 ml-1" />
+                              </div>
+                            </div>
+                            
+                            {/* YouTube indicator */}
+                            <div className="absolute top-4 right-4 bg-red-600 rounded-full p-2">
+                              <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                              </svg>
+                            </div>
+                          </>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className={`bg-white rounded-2xl shadow-lg p-6 max-w-4xl mx-auto mb-8 transition-all duration-1000 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {/* Stats Grid */}
+          <div className={`grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10 transition-all duration-700 delay-300 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             {[
-              { value: "500+", label: "SMEs Transformed", Icon: Target, color: "indigo" },
-              { value: "98%", label: "Client Satisfaction", Icon: Star, color: "purple" },
-              { value: "15+", label: "Years Experience", Icon: Award, color: "blue" },
-              { value: "24/7", label: "Support", Icon: Zap, color: "green" },
-            ].map((stat, i) => (
+              { value: "500+", label: "SMEs Transformed", Icon: Target, gradient: 'from-blue-500 to-cyan-500' },
+              { value: "98%", label: "Client Satisfaction", Icon: Star, gradient: 'from-purple-500 to-pink-500' },
+              { value: "15+", label: "Years Experience", Icon: Award, gradient: 'from-orange-500 to-red-500' },
+              { value: "24/7", label: "Support", Icon: Zap, gradient: 'from-green-500 to-emerald-500' }
+            ].map((stat, index) => (
               <div 
-                key={i} 
-                className="text-center group relative"
-                onMouseEnter={() => setHoveredStatCard(i)}
+                key={index}
+                className="group relative bg-white rounded-2xl p-5 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden"
+                style={{
+                  transform: hoveredStatCard === index ? 'translateY(-8px) scale(1.05)' : 'translateY(0) scale(1)',
+                  transitionDelay: `${index * 50}ms`
+                }}
+                onMouseEnter={() => setHoveredStatCard(index)}
                 onMouseLeave={() => setHoveredStatCard(null)}
               >
-                <div className="relative z-10 p-4 rounded-xl transition-all duration-300 bg-white group-hover:bg-gradient-to-br group-hover:from-indigo-500 group-hover:to-purple-600">
-                  <div className="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-3 transition-all duration-300 group-hover:scale-110 group-hover:bg-white/20">
-                    <stat.Icon className="w-8 h-8 text-indigo-600 group-hover:text-white" />
-                  </div>
-                  <div className="text-2xl font-bold mb-1 text-gray-900 group-hover:text-white">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-gray-600 group-hover:text-white/90">
-                    {stat.label}
-                  </div>
-                </div>
+                <div 
+                  className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                ></div>
                 
-                {/* Decorative element */}
-                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 bg-gradient-to-br from-indigo-500 to-purple-600"></div>
+                <div className="relative z-10">
+                  <div className={`w-12 h-12 bg-gradient-to-br ${stat.gradient} rounded-xl flex items-center justify-center mx-auto mb-3 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 shadow-lg`}>
+                    <stat.Icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 group-hover:text-white transition-colors duration-300">{stat.value}</h3>
+                  <p className="text-sm text-gray-600 group-hover:text-white/90 transition-colors duration-300 mt-1">{stat.label}</p>
+                </div>
+
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -skew-x-12 group-hover:translate-x-full transition-all duration-700"></div>
               </div>
             ))}
           </div>
-        </div>
 
-        <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 py-12 px-6 text-white rounded-2xl text-center">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">Ready to Transform Your Business?</h3>
-            <p className="text-base md:text-lg mb-6 opacity-90 max-w-3xl mx-auto">
-              Get right systems and processes in place to drive sustainable growth
-            </p>
-            <button
-              onClick={handleScheduleConsultation}
-              className="bg-white text-indigo-600 px-6 py-3 rounded-full font-semibold hover:bg-indigo-50 transition-all transform hover:scale-105 inline-flex items-center shadow-lg"
-            >
-              Schedule a Consultation
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </button>
+          {/* CTA Section */}
+          <div className={`bg-gradient-to-br from-gray-900 to-blue-900 rounded-2xl p-8 shadow-2xl transition-all duration-700 delay-600 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            <div className="text-center text-white">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                <Zap className="w-4 h-4" />
+                Ready to Transform Your Business?
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-3">
+                Get the right systems and processes in place to drive sustainable growth
+              </h3>
+              <button 
+                onClick={handleScheduleConsultation}
+                className="bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all transform hover:scale-105 inline-flex items-center gap-2 shadow-lg cursor-pointer"
+              >
+                Schedule a Consultation
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
-
-      <style>{`
+      
+      <style jsx>{`
+        @keyframes blob {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
