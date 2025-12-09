@@ -3,7 +3,7 @@ import "./App.css";
 import Navbar from "./components/static/Navbar.jsx";
 import Footer from "./components/static/Footer.jsx";
 import HeroSection from "./components/pages/HeroSection.jsx";
-import AboutSection from "./components/pages/about.jsx";
+import AboutSection from "./components/pages/AboutSection.jsx";
 import ProgramsSection from "./components/pages/ProgramsSection.jsx";
 import ServicesSection from "./components/pages/ServicesSection.jsx";
 import ContactSection from "./components/pages/ContactSection.jsx";
