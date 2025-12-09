@@ -156,8 +156,8 @@ const ContactSection = () => {
     {
       icon: <Phone className="w-4 h-4" />,
       title: "WhatsApp",
-      content: "+971 54 7291064",
-      link: "tel:+971547291064",
+      content: "+ 971554801133",
+      link: "tel:+ 971554801133",
       color: "green"
     },
     {
@@ -347,7 +347,7 @@ const ContactSection = () => {
                     Find Us
                   </a>
                   <a 
-                    href="tel:+971547291064" 
+                    href="tel:+971554801133" 
                     className="flex items-center justify-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all transform hover:scale-105 shadow-md"
                   >
                     <Phone className="w-3 h-3 mr-1" />
