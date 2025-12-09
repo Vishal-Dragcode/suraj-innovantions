@@ -357,7 +357,7 @@ const Navbar = () => {
             {/* CTA Button */}
             <button
               onClick={() => scrollToSection("contact")}
-              className="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full transition-colors font-medium"
+              className="hidden md:block bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md px-5 py-2 rounded-full transition-colors font-medium"
             >
               Get Started
             </button>

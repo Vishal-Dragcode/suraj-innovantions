@@ -138,14 +138,14 @@ const AboutSection = () => {
       className="py-6 relative overflow-hidden"
       style={{ 
         perspective: '1200px',
-        background: 'linear-gradient(135deg, #f8fafc 0%, #e0e7ff 50%, #f0f9ff 100%)'
+       
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Background Pattern with enhanced 3D effect and colors */}
       <div 
-        className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full filter blur-3xl transition-all duration-500 ${isVisible ? 'opacity-40 scale-100' : 'opacity-0 scale-75'}`}
+        className={`absolute top-0 right-0 w-64 h-64  rounded-full filter blur-3xl transition-all duration-500 ${isVisible ? 'opacity-40 scale-100' : 'opacity-0 scale-75'}`}
         style={{
           ...calculate3DTransform(15),
           animation: 'float 4s ease-in-out infinite',
