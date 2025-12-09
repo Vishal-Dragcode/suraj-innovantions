@@ -113,31 +113,31 @@ const ServicesSection = () => {
       id: 1,
       serviceName: "Business Model",
       videoSrc: "https://www.youtube.com/shorts/CUh3uRStCE8",
-      thumbnailSrc: "/public/images/thumbnail.jpg",
+      thumbnailSrc: "https://media.istockphoto.com/id/1497817030/photo/business-growth-data-manager-improvement-vertical.jpg?s=612x612&w=0&k=20&c=0BhLsZpjNv3fNE6545__F02i1qEV7eh3ocGF7QCp8P8=",
     },
     {
       id: 2,
       serviceName: "ERP Solutions",
       videoSrc: "https://www.youtube.com/shorts/CUh3uRStCE8",
-      thumbnailSrc: "/public/images/thumbnail.jpg",
+      thumbnailSrc: "https://media.istockphoto.com/id/1483167928/video/motion-graphic-of-blue-money-icon-and-data-matrix-simulation-digital-grid-line-with.jpg?s=640x640&k=20&c=tq2_10TSHZa1rWSDzurP8B0H0vp5UUSV9Xf7B1O52po=",
     },
     {
       id: 3,
       serviceName: "Accounting Services",
       videoSrc: "https://www.youtube.com/shorts/CUh3uRStCE8",
-      thumbnailSrc: "/public/images/thumbnail.jpg",
+      thumbnailSrc: "https://thumbs.dreamstime.com/b/financial-growth-arrow-money-coin-stack-d-background-financial-growth-arrow-money-coin-stack-d-background-vertical-304380937.jpg",
     },
     {
       id: 4,
       serviceName: "Digital Transformation",
       videoSrc: "https://www.youtube.com/shorts/CUh3uRStCE8",
-      thumbnailSrc: "/public/images/thumbnail.jpg",
+      thumbnailSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa2PvGof9qY1ENi_iCLdoOQOivObfR18CQjg&s",
     },
     {
       id: 5,
       serviceName: "Strategic Consulting",
       videoSrc: "https://www.youtube.com/shorts/CUh3uRStCE8",
-      thumbnailSrc: "/public/images/thumbnail.jpg",
+      thumbnailSrc: "https://img.freepik.com/premium-photo/visual-representation-business-stock-market-performance-time-vertical-mobile-wallpaper_892776-13465.jpg",
     },
   ];
 
