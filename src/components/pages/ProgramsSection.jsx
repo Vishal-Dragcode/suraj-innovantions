@@ -1,31 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
-import { FaUser } from "react-icons/fa";
-
-import {
-  Calendar,
-  Users,
-  Clock,
-  CheckCircle,
-  Star,
-  ArrowRight,
-  Award,
-  BookOpen,
-  TrendingUp,
-  DollarSign,
-  Zap,
-  Shield,
-  Headphones,
-  FileText,
-  UserCheck,
-  Target,
-} from "lucide-react";
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  CheckCircle, Award, Users, Target, Calendar, DollarSign, 
+  ArrowRight, Sparkles, BookOpen, TrendingUp, UserCheck, 
+  Star, Zap, Shield, Clock
+} from 'lucide-react';
 
 const ProgramsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeProgram, setActiveProgram] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [hoveredCard, setHoveredCard] = useState(null);
-  const [hoveredStatCard, setHoveredStatCard] = useState(null);
+  const [hoveredStat, setHoveredStat] = useState(null);
+  const [activeProgram, setActiveProgram] = useState(0);
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -49,22 +33,6 @@ const ProgramsSection = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top
-        });
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  // Function to handle navigation to contact section
   const handleScheduleConsultation = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -72,21 +40,12 @@ const ProgramsSection = () => {
     }
   };
 
-  const calculate3DTransform = (depth = 15) => {
-    if (!sectionRef.current) return {};
-    
-    const rect = sectionRef.current.getBoundingClientRect();
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    
-    const rotateY = ((mousePosition.x - centerX) / centerX) * depth;
-    const rotateX = -((mousePosition.y - centerY) / centerY) * depth;
-    
-    return {
-      transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-      transition: 'transform 0.1s ease-out'
-    };
-  };
+  const stats = [
+    { icon: UserCheck, value: '500+', label: 'Graduates', gradient: 'from-blue-500 to-cyan-500' },
+    { icon: TrendingUp, value: '95%', label: 'Placement', gradient: 'from-purple-500 to-pink-500' },
+    { icon: Star, value: '4.8/5', label: 'Rating', gradient: 'from-orange-500 to-red-500' },
+    { icon: Award, value: '50+', label: 'Partners', gradient: 'from-green-500 to-emerald-500' }
+  ];
 
   const programs = [
     {
@@ -94,502 +53,268 @@ const ProgramsSection = () => {
       subtitle: "Fresh Graduates / Entry Level",
       duration: "1 Month",
       fee: "AED 3,000",
-      icon: <BookOpen className="w-6 h-6" />,
-      color: "indigo",
+      icon: BookOpen,
+      gradient: 'from-blue-600 to-cyan-600',
       features: [
-        "Real-world finance simulation",
-        "Dedicated training",
-        "Corporate exposure",
-      ],
+        'Real-world finance simulation',
+        'Dedicated training sessions',
+        'Corporate exposure programs',
+        'Hands-on practical training'
+      ]
     },
     {
       title: "Finance Manager",
-      subtitle: "Senior Accountants (5-6 years experience)",
+      subtitle: "Senior Accountants (5-6 years)",
       duration: "2 Weeks",
       fee: "AED 6,000",
-      icon: <TrendingUp className="w-6 h-6" />,
-      color: "purple",
+      icon: TrendingUp,
+      gradient: 'from-purple-600 to-pink-600',
       features: [
-        "Budgets & Forecasting",
-        "Business Performance Analysis",
-        "Strategic Decision Making",
-      ],
+        'Budgets & Forecasting',
+        'Business Performance Analysis',
+        'Strategic Decision Making',
+        'Leadership development'
+      ]
     },
     {
       title: "CFO Excellence",
-      subtitle: "Finance Leaders (8+ years experience)",
+      subtitle: "Finance Leaders (8+ years)",
       duration: "1 Week",
       fee: "AED 10,000",
-      icon: <Target className="w-6 h-6" />,
-      color: "blue",
+      icon: Target,
+      gradient: 'from-indigo-600 to-blue-600',
       features: [
-        "Strategic Financial Leadership",
-        "Investor Relations & Fundraising",
-        "M&A Due Diligence",
-      ],
-    },
+        'Strategic Financial Leadership',
+        'Investor Relations & Fundraising',
+        'M&A Due Diligence',
+        'Executive decision-making'
+      ]
+    }
   ];
-
-  const stats = [
-    {
-      value: "500+",
-      label: "Graduates",
-      icon: <UserCheck className="w-4 h-4" />,
-      color: "indigo"
-    },
-    {
-      value: "95%",
-      label: "Placement Rate",
-      icon: <TrendingUp className="w-4 h-4" />,
-      color: "purple"
-    },
-    {
-      value: "4.8/5",
-      label: "Average Rating",
-      icon: <Star className="w-4 h-4" />,
-      color: "blue"
-    },
-    {
-      value: "50+",
-      label: "Corporate Partners",
-      icon: <Award className="w-4 h-4" />,
-      color: "green"
-    },
-  ];
-
-  const getColorClasses = (color) => {
-    const colorMap = {
-      indigo: {
-        bg: "from-indigo-500 to-indigo-600",
-        lightBg: "bg-indigo-50",
-        border: "border-indigo-200",
-        text: "text-indigo-600",
-        hoverBg: "hover:bg-indigo-50",
-        gradientBg: "from-indigo-50 to-indigo-100",
-        iconBg: "bg-indigo-100",
-        iconText: "text-indigo-600",
-        statHoverBg: "from-indigo-50 to-indigo-100",
-        cardBg: "bg-gradient-to-br from-indigo-50 to-white",
-        cardHoverBg: "bg-gradient-to-br from-indigo-100 to-indigo-50",
-      },
-      purple: {
-        bg: "from-purple-500 to-purple-600",
-        lightBg: "bg-purple-50",
-        border: "border-purple-200",
-        text: "text-purple-600",
-        hoverBg: "hover:bg-purple-50",
-        gradientBg: "from-purple-50 to-purple-100",
-        iconBg: "bg-purple-100",
-        iconText: "text-purple-600",
-        statHoverBg: "from-purple-50 to-purple-100",
-        cardBg: "bg-gradient-to-br from-purple-50 to-white",
-        cardHoverBg: "bg-gradient-to-br from-purple-100 to-purple-50",
-      },
-      blue: {
-        bg: "from-blue-500 to-blue-600",
-        lightBg: "bg-blue-50",
-        border: "border-blue-200",
-        text: "text-blue-600",
-        hoverBg: "hover:bg-blue-50",
-        gradientBg: "from-blue-50 to-blue-100",
-        iconBg: "bg-blue-100",
-        iconText: "text-blue-600",
-        statHoverBg: "from-blue-50 to-blue-100",
-        cardBg: "bg-gradient-to-br from-blue-50 to-white",
-        cardHoverBg: "bg-gradient-to-br from-blue-100 to-blue-50",
-      },
-      green: {
-        bg: "from-green-500 to-green-600",
-        lightBg: "bg-green-50",
-        border: "border-green-200",
-        text: "text-green-600",
-        hoverBg: "hover:bg-green-50",
-        gradientBg: "from-green-50 to-green-100",
-        iconBg: "bg-green-100",
-        iconText: "text-green-600",
-        statHoverBg: "from-green-50 to-green-100",
-        cardBg: "bg-gradient-to-br from-green-50 to-white",
-        cardHoverBg: "bg-gradient-to-br from-green-100 to-green-50",
-      },
-    };
-    return colorMap[color] || colorMap.indigo;
-  };
 
   return (
-    <section
+    <section 
+      id="programs"
       ref={sectionRef}
-      className="py-6 relative overflow-hidden"
-      style={{ 
-        backgroundColor: "#e9f2ff",
-        perspective: '1000px'
-      }}
+      className="py-12 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50"
     >
-      {/* Background decoration */}
-      <div 
-        className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full filter blur-3xl opacity-40"
-        style={{
-          ...calculate3DTransform(5),
-          animation: 'float 6s ease-in-out infinite'
-        }}
-      ></div>
-      <div 
-        className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-blue-100 to-indigo-100 rounded-full filter blur-3xl opacity-40"
-        style={{
-          ...calculate3DTransform(5),
-          animation: 'float 8s ease-in-out infinite reverse'
-        }}
-      ></div>
-
-      <div className="container  mx-auto px-4 relative z-10">
-        {/* Section Header */}
-        <div
-          className={`text-center mb-8 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-          style={{
-            transformStyle: 'preserve-3d',
-            transform: isVisible ? 'translateZ(0)' : 'translateZ(-50px)',
-            ...calculate3DTransform(5)
-          }}
-        >
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-10 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div className="absolute top-40 left-20 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-1/2 w-64 h-64 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
           <div 
-            className="inline-flex items-center bg-white px-4 py-2 rounded-full text-sm font-medium mb-4 shadow-sm"
-            style={{
-              transformStyle: 'preserve-3d',
-              transform: 'translateZ(20px)',
-              boxShadow: '0 10px 20px rgba(0,0,0,0.1)',
-              transition: 'transform 0.3s ease-out'
-            }}
+            className={`text-center mb-10 transition-all duration-700 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
+            }`}
           >
-            <Award className="w-4 h-4 mr-2 text-indigo-600" />
-            Suraj Incubator
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-semibold mb-3 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Sparkles className="w-4 h-4" />
+              Suraj Incubator Programs
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              Transform Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">Career</span>
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Real-world simulation bringing corporate experience to the training institute
+            </p>
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
-            Transform Your{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
-              Career
-            </span>{" "}
-            with Our Programs
-          </h2>
-
-          <p className="text-gray-700 max-w-2xl mx-auto mb-6">
-            Real-world simulation bringing corporate experience to the training
-            institute
-          </p>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {stats.map((stat, index) => {
-              const colorClasses = getColorClasses(stat.color);
-              return (
-                <div
-                  key={index}
-                  className={`rounded-xl p-5 shadow-sm transition-all duration-700 ${
-                    isVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-10"
-                  } ${hoveredStatCard === index ? `bg-gradient-to-br ${colorClasses.statHoverBg}` : 'bg-white'}`}
-                  style={{ 
-                    transitionDelay: `${index * 100 + 300}ms`,
-                    transformStyle: 'preserve-3d',
-                    transform: isVisible 
-                      ? `translateZ(0) rotateY(${index % 2 === 0 ? 0 : 5}deg)` 
-                      : 'translateZ(-50px) rotateY(0)',
-                    transition: 'transform 0.3s ease-out, background 0.3s ease-out'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateZ(20px) rotateY(10deg) rotateX(-10deg) scale(1.05)';
-                    e.currentTarget.style.boxShadow = '0 15px 30px rgba(0,0,0,0.15)';
-                    setHoveredStatCard(index);
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = `translateZ(0) rotateY(${index % 2 === 0 ? 0 : 5}deg) rotateX(0) scale(1)`;
-                    e.currentTarget.style.boxShadow = '';
-                    setHoveredStatCard(null);
-                  }}
-                >
-                  <div className="flex items-center justify-center mb-3">
-                    <div className={`w-14 h-14 ${colorClasses.iconBg} rounded-full flex items-center justify-center`}
-                      style={{
-                        transform: 'translateZ(10px)',
-                        boxShadow: '0 5px 15px rgba(0,0,0,0.1)'
-                      }}
-                    >
-                      {React.cloneElement(stat.icon, {
-                        className: `w-7 h-7 ${colorClasses.iconText}`,
-                      })}
-                    </div>
-                  </div>
-                  <div className="text-3xl font-bold text-gray-900 text-center"
-                    style={{ transform: 'translateZ(5px)' }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-gray-600 text-center mt-1">
-                    {stat.label}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Program Tabs */}
-        <div className="flex justify-center mb-8">
-          <div 
-            className="bg-white rounded-lg shadow-sm p-1 inline-flex"
-            style={{
-              transformStyle: 'preserve-3d',
-              transform: 'translateZ(10px)',
-              boxShadow: '0 10px 20px rgba(0,0,0,0.1)'
-            }}
-          >
-            {programs.map((program, index) => (
-              <button
+          {/* Stats Grid */}
+          <div className={`grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10 transition-all duration-700 delay-200 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            {stats.map((stat, index) => (
+              <div 
                 key={index}
-                className={`px-4 py-2 rounded-md font-medium text-sm transition-all ${
-                  activeProgram === index
-                    ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md"
-                    : "text-gray-700 hover:text-indigo-600"
-                }`}
-                onClick={() => setActiveProgram(index)}
+                className="group relative bg-white rounded-2xl p-5 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden"
                 style={{
-                  transformStyle: 'preserve-3d',
-                  transform: activeProgram === index ? 'translateZ(5px)' : 'translateZ(0)',
-                  transition: 'transform 0.2s ease-out'
+                  transform: hoveredStat === index ? 'translateY(-8px) scale(1.05)' : 'translateY(0) scale(1)',
+                  transitionDelay: `${index * 50}ms`
                 }}
-              >
-                {program.title}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Program Cards */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {programs.map((program, index) => {
-            const colorClasses = getColorClasses(program.color);
-            return (
-              <div
-                key={index}
-                className={`transition-all duration-1000 h-full ${
-                  activeProgram === index
-                    ? "opacity-100 scale-100"
-                    : "opacity-70 scale-95"
-                }`}
-                style={{
-                  transformStyle: 'preserve-3d',
-                  transform: activeProgram === index 
-                    ? 'translateZ(0)' 
-                    : 'translateZ(-30px)',
-                  transition: 'transform 0.5s ease-out'
-                }}
+                onMouseEnter={() => setHoveredStat(index)}
+                onMouseLeave={() => setHoveredStat(null)}
               >
                 <div 
-                  className={`rounded-xl shadow-md overflow-hidden transition-all duration-500 h-full flex flex-col ${
-                    hoveredCard === index ? 'shadow-2xl' : ''
-                  } ${hoveredCard === index ? colorClasses.cardHoverBg : colorClasses.cardBg}`}
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    transform: hoveredCard === index 
-                      ? 'translateZ(30px) rotateY(5deg) rotateX(-5deg) scale(1.03)' 
-                      : 'translateZ(0)',
-                    transition: 'transform 0.3s ease-out, background 0.3s ease-out',
-                    boxShadow: hoveredCard === index 
-                      ? '0 25px 50px rgba(0,0,0,0.2)' 
-                      : '0 4px 6px rgba(0,0,0,0.1)',
-                  }}
-                  onMouseEnter={() => setHoveredCard(index)}
-                  onMouseLeave={() => setHoveredCard(null)}
+                  className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                ></div>
+                
+                <div className="relative z-10">
+                  <div className={`w-12 h-12 bg-gradient-to-br ${stat.gradient} rounded-xl flex items-center justify-center mx-auto mb-3 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 shadow-lg`}>
+                    <stat.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 group-hover:text-white transition-colors duration-300">{stat.value}</h3>
+                  <p className="text-sm text-gray-600 group-hover:text-white/90 transition-colors duration-300 mt-1">{stat.label}</p>
+                </div>
+
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -skew-x-12 group-hover:translate-x-full transition-all duration-700"></div>
+              </div>
+            ))}
+          </div>
+
+          {/* Program Tabs */}
+          <div className={`flex justify-center mb-8 transition-all duration-700 delay-300 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            <div className="bg-white rounded-xl shadow-lg p-1.5 inline-flex gap-1 flex-wrap justify-center">
+              {programs.map((program, index) => (
+                <button
+                  key={index}
+                  className={`px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 ${
+                    activeProgram === index
+                      ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md scale-105"
+                      : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                  }`}
+                  onClick={() => setActiveProgram(index)}
                 >
-                  {/* Program Header */}
-                  <div
-                    className={`bg-gradient-to-r ${
-                      colorClasses.bg
-                    } text-white p-5 relative`}
-                    style={{
-                      transformStyle: 'preserve-3d',
-                      transform: 'translateZ(20px)',
-                      boxShadow: hoveredCard === index 
-                        ? '0 10px 20px rgba(0,0,0,0.2)' 
-                        : 'none'
-                    }}
-                  >
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-white opacity-10 rounded-full -mr-12 -mt-12"></div>
+                  {program.title}
+                </button>
+              ))}
+            </div>
+          </div>
 
-                    <div className="relative z-10 flex flex-col items-center text-center">
-                      <div 
-                        className="bg-white bg-opacity-20 rounded-full p-3 mb-3"
-                        style={{
-                          transformStyle: 'preserve-3d',
-                          transform: 'translateZ(10px) rotateY(10deg)',
-                          boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-                          transition: 'transform 0.3s ease-out'
-                        }}
-                      >
-                        <FaUser size={24} color="#000" />
+          {/* Programs Grid - All 3 cards visible with slightly smaller size */}
+          <div className={`grid lg:grid-cols-3 gap-6 mb-10 transition-all duration-700 delay-400 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            {programs.map((program, index) => (
+              <div 
+                key={index}
+                className={`group relative rounded-2xl shadow-lg transition-all duration-500 overflow-hidden cursor-pointer w-full ${
+                  activeProgram === index 
+                    ? 'shadow-xl transform scale-105' 
+                    : 'hover:shadow-xl transform scale-100'
+                }`}
+                style={{
+                  transform: activeProgram === index 
+                    ? 'translateY(-5px) scale(1.02)' 
+                    : hoveredCard === index 
+                      ? 'translateY(-3px)' 
+                      : 'translateY(0)',
+                  transition: 'all 0.3s ease-out'
+                }}
+                onClick={() => setActiveProgram(index)}
+                onMouseEnter={() => setHoveredCard(index)}
+                onMouseLeave={() => setHoveredCard(null)}
+              >
+                <div className="relative bg-white rounded-2xl h-full">
+                  {/* Header with Gradient - Reduced padding */}
+                  <div className={`relative bg-gradient-to-r ${program.gradient} text-white p-4 overflow-hidden`}>
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -mr-10 -mt-10"></div>
+                    <div className="absolute bottom-0 left-0 w-16 h-16 bg-white/10 rounded-full -ml-8 -mb-8"></div>
+                    
+                    <div className="relative z-10 text-center">
+                      <div className={`w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-2 transition-all duration-300 ${
+                        activeProgram === index ? 'scale-110 rotate-12' : 'scale-100'
+                      }`}>
+                        <program.icon className="w-6 h-6 text-white" />
                       </div>
-
-                      <h3 
-                        className="text-xl font-bold mb-1"
-                        style={{ transform: 'translateZ(5px)' }}
-                      >
-                        {program.title}
-                      </h3>
-                      <p 
-                        className="text-white opacity-90 text-sm"
-                        style={{ transform: 'translateZ(3px)' }}
-                      >
-                        {program.subtitle}
-                      </p>
+                      <h3 className="text-base font-bold mb-1">{program.title}</h3>
+                      <p className="text-white/90 text-xs">{program.subtitle}</p>
                     </div>
                   </div>
 
-                  {/* Program Details */}
-                  <div className="p-5 flex-grow flex flex-col">
+                  {/* Content - Reduced padding and spacing */}
+                  <div className="p-4">
+                    {/* Duration and Fee - Reduced size */}
                     <div className="grid grid-cols-2 gap-3 mb-4">
-                      <div 
-                        className="flex items-center"
-                        style={{ transform: 'translateZ(5px)' }}
-                      >
-                        <Calendar className="w-4 h-4 text-indigo-600 mr-2" />
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                          <Clock className="w-4 h-4 text-blue-600" />
+                        </div>
                         <div>
                           <p className="text-xs text-gray-500">Duration</p>
-                          <p className="font-semibold text-sm">
-                            {program.duration}
-                          </p>
+                          <p className="font-semibold text-sm text-gray-900">{program.duration}</p>
                         </div>
                       </div>
-                      <div 
-                        className="flex items-center"
-                        style={{ transform: 'translateZ(5px)' }}
-                      >
-                        <DollarSign className="w-4 h-4 text-indigo-600 mr-2" />
+                      <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                          <DollarSign className="w-4 h-4 text-green-600" />
+                        </div>
                         <div>
                           <p className="text-xs text-gray-500">Fee</p>
-                          <p className="font-semibold text-sm">{program.fee}</p>
+                          <p className="font-semibold text-sm text-gray-900">{program.fee}</p>
                         </div>
                       </div>
                     </div>
 
-                    <div className="mb-4 flex-grow">
-                      <h4 
-                        className="font-semibold text-gray-900 mb-2 flex items-center text-sm"
-                        style={{ transform: 'translateZ(5px)' }}
-                      >
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                        Key Features:
+                    {/* Features - Reduced spacing */}
+                    <div className="mb-4">
+                      <h4 className="font-semibold text-gray-900 mb-2 text-sm flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-green-500" />
+                        Key Features
                       </h4>
-                      <ul className="space-y-2">
+                      <div className="space-y-2">
                         {program.features.map((feature, idx) => (
-                          <li 
-                            key={idx} 
-                            className="flex items-start"
-                            style={{ transform: `translateZ(${3 + idx}px)` }}
-                          >
-                            <div 
-                              className="w-4 h-4 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mr-2 mt-0.5"
-                              style={{
-                                transform: 'translateZ(5px)',
-                                boxShadow: hoveredCard === index 
-                                  ? '0 3px 6px rgba(0,0,0,0.1)' 
-                                  : 'none'
-                              }}
-                            >
-                              <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                            </div>
-                            <span className="text-gray-700 text-sm">
-                              {feature}
-                            </span>
-                          </li>
+                          <div key={idx} className="flex items-start gap-2">
+                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 flex-shrink-0"></div>
+                            <p className="text-sm text-gray-700">{feature}</p>
+                          </div>
                         ))}
-                      </ul>
+                      </div>
                     </div>
 
-                    <div className="mt-auto">
-                      <button
-                        className={`w-full py-2 rounded-lg font-medium text-sm transition-all flex items-center justify-center ${
-                          colorClasses.lightBg
-                        } ${colorClasses.text} ${
-                          colorClasses.hoverBg
-                        }`}
-                        style={{
-                          transformStyle: 'preserve-3d',
-                          transform: hoveredCard === index ? 'translateZ(10px)' : 'translateZ(0)',
-                          boxShadow: hoveredCard === index 
-                            ? '0 5px 15px rgba(0,0,0,0.1)' 
-                            : 'none',
-                          transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out'
-                        }}
-                      >
-                        Learn More
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </button>
-                    </div>
+                    {/* CTA Button - Reduced size */}
+                    <button className={`w-full py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 ${
+                      activeProgram === index
+                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md'
+                        : 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-md'
+                    }`}>
+                      Learn More
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
                   </div>
                 </div>
               </div>
-            );
-          })}
-        </div>
+            ))}
+          </div>
 
-        {/* CTA Section */}
-        <div
-          className={`w-full transition-all rounded-2xl duration-1000 delay-700 mt-12 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-          style={{
-            transformStyle: 'preserve-3d',
-            transform: isVisible ? 'translateZ(0)' : 'translateZ(-50px)',
-            ...calculate3DTransform(5)
-          }}
-        >
-          <div 
-            className="bg-gradient-to-r from-indigo-600 to-purple-600 w-full py-12 px-6 text-white rounded-2xl"
-            style={{
-              transformStyle: 'preserve-3d',
-              transform: 'translateZ(10px)',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.2)'
-            }}
-          >
-            <div className="container mx-auto text-center">
-              <h3 
-                className="text-3xl md:text-4xl font-bold mb-6"
-                style={{ transform: 'translateZ(20px)' }}
-              >
-                Ready to Transform Your Career?
+          {/* CTA Section */}
+          <div className={`bg-gradient-to-br from-gray-900 to-blue-900 rounded-2xl p-8 shadow-2xl transition-all duration-700 delay-600 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            <div className="text-center text-white">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                <Zap className="w-4 h-4" />
+                Start Your Journey Today
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-3">
+                Ready to Transform Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-400">Career?</span>
               </h3>
-              <p 
-                className="text-lg md:text-xl mb-8 opacity-90 max-w-3xl mx-auto"
-                style={{ transform: 'translateZ(10px)' }}
-              >
-                Get the right skills and experience to accelerate your
-                professional growth
+              <p className="text-white/90 mb-6 max-w-2xl mx-auto">
+                Get the right skills and experience to accelerate your professional growth
               </p>
               <button 
                 onClick={handleScheduleConsultation}
-                className="bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold hover:bg-indigo-50 transition-all transform hover:scale-105 inline-flex items-center justify-center text-lg shadow-lg cursor-pointer"
-                style={{
-                  transformStyle: 'preserve-3d',
-                  transform: 'translateZ(15px)',
-                  boxShadow: '0 10px 20px rgba(0,0,0,0.2)'
-                }}
+                className="bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all transform hover:scale-105 inline-flex items-center gap-2 shadow-lg cursor-pointer"
               >
                 Schedule a Consultation
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="w-5 h-5" />
               </button>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Custom styles for animations */}
+      
       <style jsx>{`
-        @keyframes float {
-          0% { transform: translateY(0px) rotateX(0deg); }
-          50% { transform: translateY(-20px) rotateX(5deg); }
-          100% { transform: translateY(0px) rotateX(0deg); }
+        @keyframes blob {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
         }
       `}</style>
     </section>
