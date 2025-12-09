@@ -90,7 +90,7 @@ const HeroSection = () => {
         muted
         playsInline
       >
-        <source src="/public/images/video1.mp4" type="video/mp4" />
+        <source src="https://aiadvocate.s3.ap-south-1.amazonaws.com/video1.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       

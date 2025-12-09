@@ -454,7 +454,7 @@ const AboutSection = () => {
                   >
                     <div className="absolute inset-0  rounded-full"></div>
                     <img 
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrOv0KoGHJx1IiQhd9RzPmbHSYBacjLdmWyw&s"
+                      src="https://aiadvocate.s3.ap-south-1.amazonaws.com/founder.jpg"
                       alt="Sachin Birewar - Founder of Suraj Innovations" 
                       className="w-full h-full object-cover rounded-full border-4 border-white"
                     />
