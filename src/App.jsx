@@ -9,25 +9,34 @@ import ServicesSection from "./components/pages/ServicesSection.jsx";
 import ContactSection from "./components/pages/ContactSection.jsx";
 import WhatsAppButton from "./components/pages/WhatsAppButton.jsx";
 import PrivacyPolicy from "./components/pages/PrivacyPolicy.jsx";
+import TermsOfService from "./components/pages/TermsofService.jsx";
+
 
 function App() {
-  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
+  const [currentPage, setCurrentPage] = useState('home');
 
   const handleNavigation = (path) => {
+    console.log("Navigating to:", path);
     if (path === '/privacy-policy') {
-      setShowPrivacyPolicy(true);
-    } else {
-      setShowPrivacyPolicy(false);
+      setCurrentPage('privacy-policy');
+      window.scrollTo(0, 0);
+    } else if (path === '/terms-of-service') {
+      setCurrentPage('terms-of-service');
+      window.scrollTo(0, 0);
+    }else {
+      setCurrentPage('home');
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar onNavigate={handleNavigation} /> 
+      <Navbar onNavigate={handleNavigation} currentPage={currentPage} /> 
       <main className="flex-grow">
-        {showPrivacyPolicy ? (
+        {currentPage === 'privacy-policy' ? (
           <PrivacyPolicy />
-        ) : (
+        ) : currentPage === 'terms-of-service' ? (
+          <TermsOfService />
+        ): (
           <>
             <HeroSection />
             <AboutSection />

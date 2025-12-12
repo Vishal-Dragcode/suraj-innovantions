@@ -2,7 +2,13 @@ import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, Mail, Youtube } from 'lucide-react';
 import { BsTiktok } from 'react-icons/bs';
 
-const Footer = () => {
+const Footer = ({ onNavigate }) => {
+  const handleLinkClick = (path) => {
+    if (onNavigate) {
+      onNavigate(path);
+    }
+  };
+
   return (
     <footer className="bg-gradient-to-br from-slate-900 to-slate-800 text-white relative overflow-hidden">
       <div className="container mx-auto px-6 py-8">
@@ -96,15 +102,19 @@ const Footer = () => {
               © 2025 Suraj Innovations. All rights reserved.
             </p>
             <div className="flex justify-center space-x-6 mt-4">
-              <a href="/privacy-policy" className="text-gray-400 hover:text-white transition-colors text-sm">
+              <button 
+                onClick={() => handleLinkClick('/privacy-policy')}
+                className="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer"
+              >
                 Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
+              </button>
+              <button 
+                onClick={() => handleLinkClick('/terms-of-service')}
+                className="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer"
+              >
                 Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
-                Cookie Policy
-              </a>
+              </button>
+             
             </div>
           </div>
         </div>
