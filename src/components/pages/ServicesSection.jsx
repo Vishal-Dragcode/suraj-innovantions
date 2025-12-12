@@ -134,11 +134,13 @@ const ServicesSection = () => {
   };
 
   return (
+    // Add the id="career" attribute here to match the navbar button
     <section 
+      id="career" 
       ref={sectionRef}
       className="py-12 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50"
     >
-      {/* Animated Background Elements */}
+      {/* Rest of your component remains the same */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-10 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
         <div className="absolute top-40 left-20 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
@@ -155,13 +157,13 @@ const ServicesSection = () => {
           >
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-semibold mb-3 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <Sparkles className="w-4 h-4" />
-              Professional Services
+              Management Services
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
               Management <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">Consulting</span> Services
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Empowering SMEs with big-company operational systems at affordable prices
+              Empowering SMEs with big-company management systems at reasonable prices
             </p>
           </div>
 
@@ -276,10 +278,10 @@ const ServicesSection = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             {[
-              { value: "500+", label: "SMEs Transformed", Icon: Target, gradient: 'from-blue-500 to-cyan-500' },
-              { value: "98%", label: "Client Satisfaction", Icon: Star, gradient: 'from-purple-500 to-pink-500' },
-              { value: "15+", label: "Years Experience", Icon: Award, gradient: 'from-orange-500 to-red-500' },
-              { value: "24/7", label: "Support", Icon: Zap, gradient: 'from-green-500 to-emerald-500' }
+              { value: "500+", label: "Setup good business model", Icon: Target, gradient: 'from-blue-500 to-cyan-500' },
+              { value: "98%", label: "Begin to SEE your business well", Icon: Star, gradient: 'from-purple-500 to-pink-500' },
+              { value: "15+", label: " Manage the business than operate the business", Icon: Award, gradient: 'from-orange-500 to-red-500' },
+              { value: "24/7", label: " Get more business hours to get more sales.", Icon: Zap, gradient: 'from-green-500 to-emerald-500' }
             ].map((stat, index) => (
               <div 
                 key={index}

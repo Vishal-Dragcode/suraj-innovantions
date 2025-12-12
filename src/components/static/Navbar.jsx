@@ -40,7 +40,7 @@ const Navbar = () => {
       }
 
       // Determine which section is currently in view
-      const sections = ["home", "about", "courses", "career", "contact"];
+      const sections = ["home", "about", "programs", "career", "contact"];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -97,7 +97,7 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             <div className="flex items-center">
               <Phone size={14} className="mr-1" />
-              <span>+971554801133</span>
+              <span>+971 54 279 1064</span>
             </div>
             <div className="flex items-center">
               <Mail size={14} className="mr-1" />
@@ -109,7 +109,7 @@ const Navbar = () => {
               <Youtube size={16} />
             </a>
             <a href="https://www.tiktok.com/@suraj.innovations?_r=1&_t=ZS-91xtRALEwTp" className="hover:text-blue-400 transition-colors">
-              < BsTiktok size={16} />
+              <BsTiktok size={16} />
             </a>
             <a
               href="https://www.linkedin.com/in/sachinbirewar/"
@@ -138,7 +138,7 @@ const Navbar = () => {
                 className="flex items-center"
               >
                 <img
-                  src="/images/logo.png"
+                  src="https://aiadvocate.s3.ap-south-1.amazonaws.com/logo.png"
                   alt="Company Logo"
                   className="h-16 w-auto object-contain"
                 />
@@ -170,7 +170,7 @@ const Navbar = () => {
                 About
               </button>
 
-              {/* Courses Dropdown - Compact and Finance Management Related */}
+              {/* Programs Dropdown - Fixed to match ProgramsSection */}
               <div
                 className="relative"
                 ref={dropdownRef}
@@ -178,18 +178,18 @@ const Navbar = () => {
               >
                 <button
                   className={`flex items-center transition-colors font-medium px-4 py-2 rounded-md ${
-                    activeSection === "courses"
+                    activeSection === "programs"
                       ? "text-blue-600 bg-blue-50"
                       : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
                   }`}
                   onMouseEnter={() => setIsDropdownOpen(true)}
                   onClick={() => {
                     setIsDropdownOpen(!isDropdownOpen);
-                    scrollToSection("courses");
+                    scrollToSection("programs");
                   }}
                 >
                   <Book size={18} className="mr-2" />
-                  Courses
+                  Programs
                   <ChevronDown
                     size={16}
                     className={`ml-1 transition-transform ${
@@ -216,30 +216,26 @@ const Navbar = () => {
                         <ul className="space-y-2 text-sm ml-10">
                           <li>
                             <button
-                              onClick={() => scrollToSection("exec-accountant")}
+                              onClick={() => scrollToSection("programs")}
                               className="text-gray-600 hover:text-blue-600 block text-left"
                             >
-                              Complete Finance Function
+                              Real-world finance simulation
                             </button>
                           </li>
                           <li>
                             <button
-                              onClick={() =>
-                                scrollToSection("system-restructuring")
-                              }
+                              onClick={() => scrollToSection("programs")}
                               className="text-gray-600 hover:text-blue-600 block text-left"
                             >
-                              System Restructuring
+                              Dedicated training sessions
                             </button>
                           </li>
                           <li>
                             <button
-                              onClick={() =>
-                                scrollToSection("corporate-exposure")
-                              }
+                              onClick={() => scrollToSection("programs")}
                               className="text-gray-600 hover:text-blue-600 block text-left"
                             >
-                              Corporate Exposure
+                              Corporate exposure programs
                             </button>
                           </li>
                         </ul>
@@ -256,7 +252,7 @@ const Navbar = () => {
                         <ul className="space-y-2 text-sm ml-10">
                           <li>
                             <button
-                              onClick={() => scrollToSection("budgeting")}
+                              onClick={() => scrollToSection("programs")}
                               className="text-gray-600 hover:text-blue-600 block text-left"
                             >
                               Budgets & Forecasting
@@ -264,7 +260,7 @@ const Navbar = () => {
                           </li>
                           <li>
                             <button
-                              onClick={() => scrollToSection("performance")}
+                              onClick={() => scrollToSection("programs")}
                               className="text-gray-600 hover:text-blue-600 block text-left"
                             >
                               Business Performance Analysis
@@ -272,7 +268,7 @@ const Navbar = () => {
                           </li>
                           <li>
                             <button
-                              onClick={() => scrollToSection("strategic")}
+                              onClick={() => scrollToSection("programs")}
                               className="text-gray-600 hover:text-blue-600 block text-left"
                             >
                               Strategic Decision Making
@@ -281,43 +277,37 @@ const Navbar = () => {
                         </ul>
                       </div>
 
-                      {/* CFO Excellence */}
+                      {/* Own Business Accounting */}
                       <div>
                         <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
                           <div className="bg-purple-100 rounded-full p-2 mr-3">
                             <Award size={18} className="text-purple-600" />
                           </div>
-                          CFO Excellence
+                          Own Business Accounting
                         </h4>
                         <ul className="space-y-2 text-sm ml-10">
                           <li>
                             <button
-                              onClick={() =>
-                                scrollToSection("strategic-leadership")
-                              }
+                              onClick={() => scrollToSection("programs")}
                               className="text-gray-600 hover:text-blue-600 block text-left"
                             >
-                              Strategic Financial Leadership
+                              Setup your business model
                             </button>
                           </li>
                           <li>
                             <button
-                              onClick={() =>
-                                scrollToSection("investor-relations")
-                              }
+                              onClick={() => scrollToSection("programs")}
                               className="text-gray-600 hover:text-blue-600 block text-left"
                             >
-                              Investor Relations & Fundraising
+                              Learn Business Accounting
                             </button>
                           </li>
                           <li>
                             <button
-                              onClick={() =>
-                                scrollToSection("ma-due-diligence")
-                              }
+                              onClick={() => scrollToSection("programs")}
                               className="text-gray-600 hover:text-blue-600 block text-left"
                             >
-                              M&A Due Diligence
+                              Create Performance reports
                             </button>
                           </li>
                         </ul>
@@ -337,7 +327,7 @@ const Navbar = () => {
                 }`}
               >
                 <Briefcase size={18} className="mr-2" />
-                Career
+                Services 
               </button>
 
               {/* Contact Tab */}
@@ -406,22 +396,22 @@ const Navbar = () => {
               </span>
             </button>
 
-            {/* Mobile Courses Dropdown */}
+            {/* Mobile Programs Dropdown */}
             <div>
               <button
                 className={`flex items-center transition-colors font-medium py-2 w-full justify-between ${
-                  activeSection === "courses"
+                  activeSection === "programs"
                     ? "text-blue-600"
                     : "text-gray-700 hover:text-blue-600"
                 }`}
                 onClick={() => {
                   setIsDropdownOpen(!isDropdownOpen);
-                  scrollToSection("courses");
+                  scrollToSection("programs");
                 }}
               >
                 <span className="flex items-center">
                   <Book size={18} className="mr-2" />
-                  Courses
+                  Programs
                 </span>
                 <ChevronDown
                   size={16}
@@ -441,28 +431,26 @@ const Navbar = () => {
                     <ul className="space-y-1">
                       <li>
                         <button
-                          onClick={() => scrollToSection("exec-accountant")}
+                          onClick={() => scrollToSection("programs")}
                           className="hover:text-blue-600 block text-left"
                         >
-                          Complete Finance Function
+                          Real-world finance simulation
                         </button>
                       </li>
                       <li>
                         <button
-                          onClick={() =>
-                            scrollToSection("system-restructuring")
-                          }
+                          onClick={() => scrollToSection("programs")}
                           className="hover:text-blue-600 block text-left"
                         >
-                          System Restructuring
+                          Dedicated training sessions
                         </button>
                       </li>
                       <li>
                         <button
-                          onClick={() => scrollToSection("corporate-exposure")}
+                          onClick={() => scrollToSection("programs")}
                           className="hover:text-blue-600 block text-left"
                         >
-                          Corporate Exposure
+                          Corporate exposure programs
                         </button>
                       </li>
                     </ul>
@@ -475,7 +463,7 @@ const Navbar = () => {
                     <ul className="space-y-1">
                       <li>
                         <button
-                          onClick={() => scrollToSection("budgeting")}
+                          onClick={() => scrollToSection("programs")}
                           className="hover:text-blue-600 block text-left"
                         >
                           Budgets & Forecasting
@@ -483,7 +471,7 @@ const Navbar = () => {
                       </li>
                       <li>
                         <button
-                          onClick={() => scrollToSection("performance")}
+                          onClick={() => scrollToSection("programs")}
                           className="hover:text-blue-600 block text-left"
                         >
                           Business Performance Analysis
@@ -491,7 +479,7 @@ const Navbar = () => {
                       </li>
                       <li>
                         <button
-                          onClick={() => scrollToSection("strategic")}
+                          onClick={() => scrollToSection("programs")}
                           className="hover:text-blue-600 block text-left"
                         >
                           Strategic Decision Making
@@ -502,33 +490,31 @@ const Navbar = () => {
                   <div>
                     <h5 className="font-semibold text-gray-900 mb-2 flex items-center">
                       <Award size={16} className="mr-2 text-purple-600" />
-                      CFO Excellence
+                      Own Business Accounting
                     </h5>
                     <ul className="space-y-1">
                       <li>
                         <button
-                          onClick={() =>
-                            scrollToSection("strategic-leadership")
-                          }
+                          onClick={() => scrollToSection("programs")}
                           className="hover:text-blue-600 block text-left"
                         >
-                          Strategic Financial Leadership
+                          Setup your business model
                         </button>
                       </li>
                       <li>
                         <button
-                          onClick={() => scrollToSection("investor-relations")}
+                          onClick={() => scrollToSection("programs")}
                           className="hover:text-blue-600 block text-left"
                         >
-                          Investor Relations & Fundraising
+                          Learn Business Accounting
                         </button>
                       </li>
                       <li>
                         <button
-                          onClick={() => scrollToSection("ma-due-diligence")}
+                          onClick={() => scrollToSection("programs")}
                           className="hover:text-blue-600 block text-left"
                         >
-                          M&A Due Diligence
+                          Create Performance reports
                         </button>
                       </li>
                     </ul>
@@ -548,7 +534,7 @@ const Navbar = () => {
             >
               <span className="flex items-center">
                 <Briefcase size={18} className="mr-2" />
-                Career
+                Services
               </span>
             </button>
 
@@ -577,7 +563,7 @@ const Navbar = () => {
             <div className="flex flex-col space-y-2 pt-4 border-t border-gray-200 text-sm text-gray-600">
               <div className="flex items-center">
                 <Phone size={14} className="mr-2" />
-                <span>+971 54 7291064</span>
+                <span>+971 54 279 1064</span>
               </div>
               <div className="flex items-center">
                 <Mail size={14} className="mr-2" />
@@ -590,7 +576,7 @@ const Navbar = () => {
                 >
                   <Youtube size={16} />
                 </a>
-                <a href="#" className="hover:text-blue-600 transition-colors">
+                <a href="https://www.tiktok.com/@suraj.innovations?_r=1&_t=ZS-91xtRALEwTp" className="hover:text-blue-600 transition-colors">
                   <BsTiktok size={16} />
                 </a>
                 <a
@@ -613,7 +599,7 @@ const Navbar = () => {
 
       <div
         className={`${
-          isScrolled ? "h-14" : "h-1 4 md:h-14"
+          isScrolled ? "h-14" : "h-14 md:h-14"
         } transition-all duration-300`}
       ></div>
     </>

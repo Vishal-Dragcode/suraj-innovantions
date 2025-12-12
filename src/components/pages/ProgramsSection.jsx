@@ -5,6 +5,7 @@ import {
   Star, Zap, Shield, Clock
 } from 'lucide-react';
 
+
 const ProgramsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -41,10 +42,10 @@ const ProgramsSection = () => {
   };
 
   const stats = [
-    { icon: UserCheck, value: '500+', label: 'Graduates', gradient: 'from-blue-500 to-cyan-500' },
-    { icon: TrendingUp, value: '95%', label: 'Placement', gradient: 'from-purple-500 to-pink-500' },
-    { icon: Star, value: '4.8/5', label: 'Rating', gradient: 'from-orange-500 to-red-500' },
-    { icon: Award, value: '50+', label: 'Partners', gradient: 'from-green-500 to-emerald-500' }
+    { icon: UserCheck, value: '500+', label: 'Learn In real company environment', gradient: 'from-blue-500 to-cyan-500' },
+    { icon: TrendingUp, value: '95%', label: 'Learn Basic Roles in Accounting Department', gradient: 'from-purple-500 to-pink-500' },
+    { icon: Star, value: '4.8/5', label: 'Mentored by Industry Experts', gradient: 'from-orange-500 to-red-500' },
+    { icon: Award, value: '50+', label: 'Get benefit of Sachin Birewar\'s corporate network.', gradient: 'from-green-500 to-emerald-500' }
   ];
 
   const programs = [
@@ -77,17 +78,17 @@ const ProgramsSection = () => {
       ]
     },
     {
-      title: "CFO Excellence",
+      title: "Own Business Accounting",
       subtitle: "Finance Leaders (8+ years)",
-      duration: "1 Week",
-      fee: "AED 10,000",
+      duration: "1 Month",
+      fee: "AED 3000",
       icon: Target,
       gradient: 'from-indigo-600 to-blue-600',
       features: [
-        'Strategic Financial Leadership',
-        'Investor Relations & Fundraising',
-        'M&A Due Diligence',
-        'Executive decision-making'
+        'Setup your business model',
+        'Learn Business Accounting',
+        'Create Performance reports',
+        'Get control on your numbers'
       ]
     }
   ];
@@ -121,7 +122,7 @@ const ProgramsSection = () => {
               Transform Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">Career</span>
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Real-world simulation bringing corporate experience to the training institute
+              Real-world simulation bringing corporate experience to make you Job-Ready
             </p>
           </div>
 
@@ -185,6 +186,7 @@ const ProgramsSection = () => {
             {programs.map((program, index) => (
               <div 
                 key={index}
+                id={`program-${index}`}
                 className={`group relative rounded-2xl shadow-lg transition-all duration-500 overflow-hidden cursor-pointer w-full ${
                   activeProgram === index 
                     ? 'shadow-xl transform scale-105' 
@@ -234,7 +236,7 @@ const ProgramsSection = () => {
                       </div>
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                          <DollarSign className="w-4 h-4 text-green-600" />
+                         <img src="https://aiadvocate.s3.ap-south-1.amazonaws.com/DirhamIcon.png" alt="Dirham" className="w-4 h-4 color-green-600" />
                         </div>
                         <div>
                           <p className="text-xs text-gray-500">Fee</p>
@@ -284,10 +286,10 @@ const ProgramsSection = () => {
                 Start Your Journey Today
               </div>
               <h3 className="text-2xl md:text-3xl font-bold mb-3">
-                Ready to Transform Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-400">Career?</span>
+                Ready to Transform Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-400">Career & Business?</span>
               </h3>
               <p className="text-white/90 mb-6 max-w-2xl mx-auto">
-                Get the right skills and experience to accelerate your professional growth
+                Get the right skills and experience to accelerate your career & business growth
               </p>
               <button 
                 onClick={handleScheduleConsultation}

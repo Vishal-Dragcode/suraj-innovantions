@@ -31,8 +31,8 @@ const AboutSection = () => {
   const stats = [
     { icon: Award, value: '30+', label: 'Years', gradient: 'from-blue-500 to-cyan-500' },
     { icon: Users, value: '1000+', label: 'Students', gradient: 'from-purple-500 to-pink-500' },
-    { icon: Target, value: '100%', label: 'Placement', gradient: 'from-orange-500 to-red-500' },
-    { icon: Building2, value: '50+', label: 'Partners', gradient: 'from-green-500 to-emerald-500' }
+    { icon: Target, value: '15+', label: 'Businesses', gradient: 'from-orange-500 to-red-500' },
+    { icon: Building2, value: '5+', label: 'Partners', gradient: 'from-green-500 to-emerald-500' }
   ];
 
   return (
@@ -58,7 +58,7 @@ const AboutSection = () => {
           >
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-semibold mb-3 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <Sparkles className="w-4 h-4" />
-              Empowering Future Leaders
+              Empowering Students & Empowering Small Business
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
               About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">Suraj Innovations</span>
@@ -127,9 +127,9 @@ const AboutSection = () => {
                 
                 <div className="space-y-3">
                   {[
-                    'Provide practical corporate exposure',
-                    'Empower SMEs with enterprise systems',
-                    'Bridge academia-industry gap'
+                    'Provide students practical exposure',
+                    'Empower SME with sound business model',
+                    // 'Bridge academia-industry gap'
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-green-500 group-hover:text-green-300 flex-shrink-0 mt-0.5 transition-colors duration-300" />
@@ -160,7 +160,7 @@ const AboutSection = () => {
               <div className="relative z-10">
                 <Quote className="w-10 h-10 text-white/80 mb-3 transform group-hover:scale-110 transition-transform duration-300" />
                 <p className="text-base leading-relaxed mb-4 font-medium">
-                  "Our mission remains the same: guiding commerce and accounting students to gain better practical hands-on corporate exposure."
+                  "Our mission is to empower accounting students and SME to STAND & SUSTAIN."
                 </p>
                 <div className="flex items-center gap-2">
                   <div className="w-12 h-0.5 bg-white/40"></div>

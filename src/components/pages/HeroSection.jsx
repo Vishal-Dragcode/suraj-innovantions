@@ -69,10 +69,10 @@ const HeroSection = () => {
   };
 
   const features = [
-    { icon: <CheckCircle className="w-5 h-5" />, title: "Expert Instructors", description: "Learn from industry professionals", gradient: "from-blue-500 to-cyan-500" },
+    { icon: <CheckCircle className="w-5 h-5" />, title: "Expert Trainers", description: "Learn from industry professionals", gradient: "from-blue-500 to-cyan-500" },
     { icon: <TrendingUp className="w-5 h-5" />, title: "Career Growth", description: "Advance your career", gradient: "from-purple-500 to-pink-500" },
-    { icon: <Clock className="w-5 h-5" />, title: "Flexible Learning", description: "Study at your own pace", gradient: "from-green-500 to-emerald-500" },
-    { icon: <Globe className="w-5 h-5" />, title: "Global Community", description: "Connect with learners", gradient: "from-orange-500 to-red-500" }
+    { icon: <Clock className="w-5 h-5" />, title: "Business Modelling", description: "Stand & Sustain in business", gradient: "from-green-500 to-emerald-500" },
+    { icon: <Globe className="w-5 h-5" />, title: "Business Accounting", description: "Manage your business not operate it", gradient: "from-orange-500 to-red-500" }
   ];
 
   return (
@@ -102,14 +102,14 @@ const HeroSection = () => {
           <div className={`flex-1 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="inline-flex items-center bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
               <BookOpen className="w-4 h-4 mr-2" />
-              🎓 Finance Education Platform
+              🎓 Replace this by “Master real World Accounting
             </div>
             
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-white">
-              <span>Learning Today,</span>
+              <span>Empowering Students,</span>
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-                Unlimited Growth
+                Empowering Small Business
               </span>
               <br />
               <span className="text-2xl md:text-3xl lg:text-4xl">with Suraj Innovations</span>

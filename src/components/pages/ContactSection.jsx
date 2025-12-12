@@ -4,16 +4,16 @@ import { MapPin, Phone, Mail, MessageCircle, Send, Clock, Globe, CheckCircle, Al
 const ContactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-    captchaAnswer: ''
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+    captchaAnswer: ""
   });
   const [formStatus, setFormStatus] = useState({
     submitted: false,
     error: false,
-    message: ''
+    message: ""
   });
   const [isFocused, setIsFocused] = useState({
     name: false,
@@ -66,7 +66,7 @@ const ContactSection = () => {
     });
     setFormData({
       ...formData,
-      captchaAnswer: ''
+      captchaAnswer: ""
     });
     setCaptchaError(false);
   };
@@ -97,7 +97,7 @@ const ContactSection = () => {
       setFormStatus({
         submitted: true,
         error: true,
-        message: 'Please fill in all required fields.'
+        message: "Please fill in all required fields."
       });
       return false;
     }
@@ -107,7 +107,7 @@ const ContactSection = () => {
       setFormStatus({
         submitted: true,
         error: true,
-        message: 'Please enter a valid email address.'
+        message: "Please enter a valid email address."
       });
       return false;
     }
@@ -117,7 +117,7 @@ const ContactSection = () => {
       setFormStatus({
         submitted: true,
         error: true,
-        message: 'Please answer captcha correctly.'
+        message: "Please answer captcha correctly."
       });
       return false;
     }
@@ -134,13 +134,13 @@ const ContactSection = () => {
     setFormStatus({
       submitted: true,
       error: false,
-      message: 'Thank you for your message! We will get back to you soon.'
+      message: "Thank you for your message! We will get back to you soon."
     });
     
     // Reset form after successful submission
     setTimeout(() => {
-      setFormData({ name: '', email: '', phone: '', message: '', captchaAnswer: '' });
-      setFormStatus({ submitted: false, error: false, message: '' });
+      setFormData({ name: "", email: "", phone: "", message: "", captchaAnswer: "" });
+      setFormStatus({ submitted: false, error: false, message: "" });
       generateCaptcha();
     }, 3000);
   };
@@ -149,30 +149,30 @@ const ContactSection = () => {
     {
       icon: <MapPin className="w-4 h-4" />,
       title: "Location",
-      content: "Ajman Freezone, UAE",
+      content: "Barsha Heights, Dubai / Ajman Freezone, Ajman UAE",
       link: "https://maps.app.goo.gl/QwPVHiQzEKCZLJ2f6",
-      gradient: 'from-blue-500 to-cyan-500'
+      gradient: "from-blue-500 to-cyan-500"
     },
     {
       icon: <Phone className="w-4 h-4" />,
       title: "WhatsApp",
-      content: "+ 971554801133",
-      link: "tel:+ 971554801133",
-      gradient: 'from-green-500 to-emerald-500'
+      content: "+971 54 279 1064",
+      link: "tel:+9715542791064",
+      gradient: "from-green-500 to-emerald-500"
     },
     {
       icon: <Mail className="w-4 h-4" />,
       title: "Email",
       content: "info@surajinnovations.com",
       link: "mailto:info@surajinnovations.com",
-      gradient: 'from-purple-500 to-pink-500'
+      gradient: "from-purple-500 to-pink-500"
     },
     {
       icon: <Clock className="w-4 h-4" />,
       title: "Working Hours",
-      content: "Mon - Fri: 9:00 AM - 6:00 PM",
+      content: "Mon - Fri: 9 am to 5 pm",
       link: null,
-      gradient: 'from-orange-500 to-red-500'
+      gradient: "from-orange-500 to-red-500"
     }
   ];
 
@@ -194,7 +194,7 @@ const ContactSection = () => {
           {/* Header */}
           <div 
             className={`text-center mb-10 transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
             }`}
           >
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-semibold mb-3 shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -212,9 +212,11 @@ const ContactSection = () => {
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-6">
               {/* Contact Information */}
-              <div className={`transition-all duration-700 delay-200 ${
-                isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-              }`}>
+              <div 
+                className={`transition-all duration-700 delay-200 ${
+                  isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+                }`}
+              >
                 <div className="bg-white rounded-2xl shadow-lg p-6 h-full">
                   <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
                     <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mr-3">
@@ -229,7 +231,7 @@ const ContactSection = () => {
                         key={index} 
                         className="group relative bg-gray-50 rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer overflow-hidden"
                         style={{
-                          transform: hoveredContact === index ? 'translateY(-5px)' : 'translateY(0)',
+                          transform: hoveredContact === index ? "translateY(-5px)" : "translateY(0)",
                           transitionDelay: `${index * 50}ms`
                         }}
                         onMouseEnter={() => setHoveredContact(index)}
@@ -275,7 +277,7 @@ const ContactSection = () => {
                       Find Us
                     </a>
                     <a 
-                      href="tel:+971554801133" 
+                      href="tel:+9715542791064" 
                       className="flex items-center justify-center bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-4 py-2 rounded-xl text-sm font-medium transition-all transform hover:scale-105 shadow-md"
                     >
                       <Phone className="w-4 h-4 mr-1" />
@@ -286,10 +288,12 @@ const ContactSection = () => {
               </div>
 
               {/* Contact Form */}
-              <div className={`transition-all duration-700 delay-400 ${
-                isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-              }`}>
-                <div className="bg-white rounded-2xl shadow-lg p-6">
+              <div 
+                className={`transition-all duration-700 delay-400 ${
+                  isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
+                }`}
+              >
+                <div className="bg-white rounded-2xl shadow-lg p-6 h-full">
                   <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
                     <div className="w-10 h-10 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl flex items-center justify-center mr-3">
                       <Send className="w-5 h-5 text-white" />
@@ -299,7 +303,7 @@ const ContactSection = () => {
                   
                   {formStatus.submitted && (
                     <div className={`p-3 rounded-xl mb-4 flex items-start ${
-                      formStatus.error ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'
+                      formStatus.error ? "bg-red-50 text-red-700" : "bg-green-50 text-green-700"
                     }`}>
                       {formStatus.error ? (
                         <AlertCircle className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" />
@@ -318,15 +322,15 @@ const ContactSection = () => {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          onFocus={() => handleFocus('name')}
-                          onBlur={() => handleBlur('name')}
+                          onFocus={() => handleFocus("name")}
+                          onBlur={() => handleBlur("name")}
                           placeholder="Your Name" 
-                          className={`w-full px-4 py-3 border rounded-xl focus:outline-none transition-all text-sm bg-gray-50 ${
-                            isFocused.name ? 'border-blue-600 shadow-md bg-white' : 'border-gray-200'
+                          className={`w-full px-4 py-3 border rounded-xl focus:outline-none transition-all text-sm ${
+                            isFocused.name ? "border-blue-600 shadow-md bg-white" : "border-gray-200 bg-gray-50"
                           }`}
                         />
                         <div className={`absolute right-3 top-3 transition-opacity ${
-                          formData.name ? 'opacity-100' : 'opacity-0'
+                          formData.name ? "opacity-100" : "opacity-0"
                         }`}>
                           <CheckCircle className="w-5 h-5 text-green-500" />
                         </div>
@@ -338,15 +342,15 @@ const ContactSection = () => {
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
-                          onFocus={() => handleFocus('email')}
-                          onBlur={() => handleBlur('email')}
+                          onFocus={() => handleFocus("email")}
+                          onBlur={() => handleBlur("email")}
                           placeholder="Your Email" 
-                          className={`w-full px-4 py-3 border rounded-xl focus:outline-none transition-all text-sm bg-gray-50 ${
-                            isFocused.email ? 'border-blue-600 shadow-md bg-white' : 'border-gray-200'
+                          className={`w-full px-4 py-3 border rounded-xl focus:outline-none transition-all text-sm ${
+                            isFocused.email ? "border-blue-600 shadow-md bg-white" : "border-gray-200 bg-gray-50"
                           }`}
                         />
                         <div className={`absolute right-3 top-3 transition-opacity ${
-                          formData.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) ? 'opacity-100' : 'opacity-0'
+                          formData.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) ? "opacity-100" : "opacity-0"
                         }`}>
                           <CheckCircle className="w-5 h-5 text-green-500" />
                         </div>
@@ -359,18 +363,18 @@ const ContactSection = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        onFocus={() => handleFocus('phone')}
-                        onBlur={() => handleBlur('phone')}
+                        onFocus={() => handleFocus("phone")}
+                        onBlur={() => handleBlur("phone")}
                         placeholder="Your Phone (Optional)" 
-                        className={`w-full px-4 py-3 border rounded-xl focus:outline-none transition-all text-sm bg-gray-50 ${
-                          isFocused.phone ? 'border-blue-600 shadow-md bg-white' : 'border-gray-200'
+                        className={`w-full px-4 py-3 border rounded-xl focus:outline-none transition-all text-sm ${
+                          isFocused.phone ? "border-blue-600 shadow-md bg-white" : "border-gray-200 bg-gray-50"
                         }`}
                       />
                       <div className={`absolute right-3 top-3 transition-opacity ${
-                        formData.phone ? 'opacity-100' : 'opacity-0'
-                      }`}>
-                        <CheckCircle className="w-5 h-5 text-green-500" />
-                      </div>
+                          formData.phone ? "opacity-100" : "opacity-0"
+                        }`}>
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                        </div>
                     </div>
                     
                     <div className="relative">
@@ -378,38 +382,36 @@ const ContactSection = () => {
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        onFocus={() => handleFocus('message')}
-                        onBlur={() => handleBlur('message')}
+                        onFocus={() => handleFocus("message")}
+                        onBlur={() => handleBlur("message")}
                         rows="4" 
                         placeholder="Your Message" 
-                        className={`w-full px-4 py-3 border rounded-xl focus:outline-none transition-all resize-none text-sm bg-gray-50 ${
-                          isFocused.message ? 'border-blue-600 shadow-md bg-white' : 'border-gray-200'
+                        className={`w-full px-4 py-3 border rounded-xl focus:outline-none transition-all resize-none text-sm ${
+                          isFocused.message ? "border-blue-600 shadow-md bg-white" : "border-gray-200 bg-gray-50"
                         }`}
                       ></textarea>
-                      <div className={`absolute right-3 bottom-3 transition-opacity ${
-                        formData.message ? 'opacity-100' : 'opacity-0'
-                      }`}>
-                        <CheckCircle className="w-5 h-5 text-green-500" />
-                      </div>
+                      <div className={`absolute right-3 top-3 transition-opacity ${
+                          formData.message ? "opacity-100" : "opacity-0"
+                        }`}>
+                          <CheckCircle className="w-5 h-5 text-green-500" />
+                        </div>
                     </div>
                     
                     {/* Captcha Section */}
                     <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-xl border border-blue-100">
                       <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center">
-                          <span className="text-sm font-medium text-gray-700">Security Check</span>
-                          <button 
-                            type="button"
-                            onClick={generateCaptcha}
-                            className="ml-2 p-1 rounded-full hover:bg-blue-100 transition-colors"
-                            title="Refresh captcha"
-                          >
-                            <RefreshCw className="w-4 h-4 text-blue-600" />
-                          </button>
-                        </div>
-                        <div className="flex items-center">
-                          <span className="text-lg font-medium text-blue-600">{captcha.num1} + {captcha.num2} = ?</span>
-                        </div>
+                        <span className="text-sm font-medium text-gray-700">Security Check</span>
+                        <button 
+                          type="button"
+                          onClick={generateCaptcha}
+                          className="ml-2 p-1 rounded-full hover:bg-blue-100 transition-colors"
+                          title="Refresh captcha"
+                        >
+                          <RefreshCw className="w-4 h-4 text-blue-600" />
+                        </button>
+                      </div>
+                      <div className="flex items-center">
+                        <span className="text-lg font-medium text-blue-600">{captcha.num1} + {captcha.num2} = ?</span>
                       </div>
                       <div className="relative">
                         <input 
@@ -417,15 +419,15 @@ const ContactSection = () => {
                           name="captchaAnswer"
                           value={formData.captchaAnswer}
                           onChange={handleChange}
-                          onFocus={() => handleFocus('captchaAnswer')}
-                          onBlur={() => handleBlur('captchaAnswer')}
+                          onFocus={() => handleFocus("captchaAnswer")}
+                          onBlur={() => handleBlur("captchaAnswer")}
                           placeholder="Your answer" 
-                          className={`w-full px-4 py-3 border rounded-xl focus:outline-none transition-all text-sm bg-white ${
-                            isFocused.captchaAnswer || captchaError ? 'border-blue-600 shadow-md' : 'border-gray-200'
-                          } ${captchaError ? 'border-red-500' : ''}`}
+                          className={`w-full px-4 py-3 border rounded-xl focus:outline-none transition-all text-sm ${
+                            isFocused.captchaAnswer || captchaError ? "border-blue-600 shadow-md bg-white" : "border-gray-200 bg-gray-50"
+                          } ${captchaError ? "border-red-500" : ""}`}
                         />
                         <div className={`absolute right-3 top-3 transition-opacity ${
-                          formData.captchaAnswer && parseInt(formData.captchaAnswer) === captcha.answer ? 'opacity-100' : 'opacity-0'
+                          formData.captchaAnswer && parseInt(formData.captchaAnswer) === captcha.answer ? "opacity-100" : "opacity-0"
                         }`}>
                           <CheckCircle className="w-5 h-5 text-green-500" />
                         </div>
@@ -452,6 +454,8 @@ const ContactSection = () => {
               </div>
             </div>
           </div>
+
+         
         </div>
       </div>
       

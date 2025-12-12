@@ -13,8 +13,7 @@ const Footer = () => {
               <h2 className="text-2xl font-bold text-white">Suraj Innovations</h2>
             </div>
            <p className="text-gray-300 text-sm leading-relaxed mb-6">
-  Your trusted partner in making <span className="text-white font-semibold">international education dreams</span> come true. 
-  Join our community of successful students studying at world-renowned institutions.
+  Your trusted partner in making you <span className="text-white font-semibold">JOB-READY & making your business STAND & SUSATIN. </span>Join our community of successful Students grabbing good jobs and Business success stories.
 </p>
           </div>
 
@@ -69,13 +68,13 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="text-gray-300 hover:text-white transition-colors text-sm"
                 >
-                  123 Education Plaza, Mumbai, India
+                  Damac Executive Heights, Barsha Heights, Dubai / 142, F1 Block, AjmanFreezone, Al Jurf1, Ajman 
                 </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-green-400 flex-shrink-0" />
                 <a href="tel:+971547291064" className="text-gray-300 hover:text-white transition-colors text-sm">
-                  +971554801133
+                  +971 54 279 1064
                 </a>
               </li>
               <li className="flex items-center space-x-3">
@@ -97,7 +96,7 @@ const Footer = () => {
               © 2025 Suraj Innovations. All rights reserved.
             </p>
             <div className="flex justify-center space-x-6 mt-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
+              <a href="/privacy-policy" className="text-gray-400 hover:text-white transition-colors text-sm">
                 Privacy Policy
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors text-sm">
