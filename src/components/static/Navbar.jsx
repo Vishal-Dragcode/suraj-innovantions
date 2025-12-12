@@ -29,6 +29,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const dropdownRef = useRef(null);
+  const dropdownTimeoutRef = useRef(null);
 
   // Handle scroll effect and active section tracking
   useEffect(() => {
@@ -62,18 +63,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   // Function to handle smooth scrolling to sections
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -88,6 +77,31 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
     setIsDropdownOpen(false);
   };
+
+  // Enhanced dropdown handling with proper hover states
+  const handleDropdownMouseEnter = () => {
+    // Clear any existing timeout
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setIsDropdownOpen(true);
+  };
+
+  const handleDropdownMouseLeave = () => {
+    // Set a timeout to close the dropdown after a short delay
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setIsDropdownOpen(false);
+    }, 200); // 200ms delay
+  };
+
+  // Clear timeout when component unmounts
+  useEffect(() => {
+    return () => {
+      if (dropdownTimeoutRef.current) {
+        clearTimeout(dropdownTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <>
@@ -170,11 +184,11 @@ const Navbar = () => {
                 About
               </button>
 
-              {/* Programs Dropdown - Fixed to match ProgramsSection */}
+              {/* Programs Dropdown - Enhanced with proper hover handling */}
               <div
                 className="relative"
-                ref={dropdownRef}
-                onMouseLeave={() => setIsDropdownOpen(false)}
+                onMouseEnter={handleDropdownMouseEnter}
+                onMouseLeave={handleDropdownMouseLeave}
               >
                 <button
                   className={`flex items-center transition-colors font-medium px-4 py-2 rounded-md ${
@@ -182,7 +196,6 @@ const Navbar = () => {
                       ? "text-blue-600 bg-blue-50"
                       : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
                   }`}
-                  onMouseEnter={() => setIsDropdownOpen(true)}
                   onClick={() => {
                     setIsDropdownOpen(!isDropdownOpen);
                     scrollToSection("programs");
@@ -201,8 +214,8 @@ const Navbar = () => {
                 {isDropdownOpen && (
                   <div
                     className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-xl overflow-hidden z-50 border border-gray-100"
-                    onMouseEnter={() => setIsDropdownOpen(true)}
-                    onMouseLeave={() => setIsDropdownOpen(false)}
+                    onMouseEnter={handleDropdownMouseEnter}
+                    onMouseLeave={handleDropdownMouseLeave}
                   >
                     <div className="p-4">
                       {/* Executive Accountant */}
