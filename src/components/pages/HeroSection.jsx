@@ -102,7 +102,7 @@ const HeroSection = () => {
           <div className={`flex-1 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="inline-flex items-center bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
               <BookOpen className="w-4 h-4 mr-2" />
-              🎓 Replace this by “Master real World Accounting
+              🎓 Master real World Accounting
             </div>
             
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-white">
