@@ -191,7 +191,7 @@ const AboutSection = () => {
                     <div>
                       <h4 className="font-bold text-sm text-gray-900 group-hover:text-white transition-colors duration-300">Suraj Academy</h4>
                       <p className="text-blue-600 group-hover:text-blue-300 font-semibold text-xs transition-colors duration-300">1995</p>
-                      <p className="text-gray-600 group-hover:text-white/80 text-xs transition-colors duration-300">Chandrapur, India</p>
+                      <p className="text-gray-600 group-hover:text-white/80 text-xs transition-colors duration-300">India</p>
                     </div>
                   </div>
 
@@ -202,7 +202,7 @@ const AboutSection = () => {
                     <div>
                       <h4 className="font-bold text-sm text-gray-900 group-hover:text-white transition-colors duration-300">Suraj Innovations</h4>
                       <p className="text-purple-600 group-hover:text-purple-300 font-semibold text-xs transition-colors duration-300">2025</p>
-                      <p className="text-gray-600 group-hover:text-white/80 text-xs transition-colors duration-300">Ajman, UAE</p>
+                      <p className="text-gray-600 group-hover:text-white/80 text-xs transition-colors duration-300">UAE</p>
                     </div>
                   </div>
                 </div>

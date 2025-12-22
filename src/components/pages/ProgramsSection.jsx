@@ -42,10 +42,10 @@ const ProgramsSection = () => {
   };
 
   const stats = [
-    { icon: UserCheck, value: '500+', label: 'Learn In real company environment', gradient: 'from-blue-500 to-cyan-500' },
-    { icon: TrendingUp, value: '95%', label: 'Learn Basic Roles in Accounting Department', gradient: 'from-purple-500 to-pink-500' },
-    { icon: Star, value: '4.8/5', label: 'Mentored by Industry Experts', gradient: 'from-orange-500 to-red-500' },
-    { icon: Award, value: '50+', label: 'Get benefit of Sachin Birewar\'s corporate network.', gradient: 'from-green-500 to-emerald-500' }
+    { icon: UserCheck,  label: 'Learn In real company environment', gradient: 'from-blue-500 to-cyan-500' },
+    { icon: TrendingUp, label: 'Learn Basic Roles in Accounting Department', gradient: 'from-purple-500 to-pink-500' },
+    { icon: Star,  label: 'Mentored by Industry Experts', gradient: 'from-orange-500 to-red-500' },
+    { icon: Award,  label: 'Get benefit of Sachin Birewar\'s corporate network.', gradient: 'from-green-500 to-emerald-500' }
   ];
 
   const programs = [
@@ -57,10 +57,10 @@ const ProgramsSection = () => {
       icon: BookOpen,
       gradient: 'from-blue-600 to-cyan-600',
       features: [
-        'Real-world finance simulation',
-        'Dedicated training sessions',
-        'Corporate exposure programs',
-        'Hands-on practical training'
+        'Real-World Finance Simulation',
+        'Dedicated Training Sessions',
+        'Corporate Exposure Programs',
+        'Hands-On Practical Training'
       ]
     },
     {
@@ -74,7 +74,7 @@ const ProgramsSection = () => {
         'Budgets & Forecasting',
         'Business Performance Analysis',
         'Strategic Decision Making',
-        'Leadership development'
+        'Leadership Development'
       ]
     },
     {
@@ -85,13 +85,14 @@ const ProgramsSection = () => {
       icon: Target,
       gradient: 'from-indigo-600 to-blue-600',
       features: [
-        'Setup your business model',
+        'Setup Your Business Model',
         'Learn Business Accounting',
-        'Create Performance reports',
-        'Get control on your numbers'
+        'Create Performance Reports',
+        'Get Control On Your Numbers'
       ]
     }
   ];
+
 
   return (
     <section 
@@ -99,6 +100,8 @@ const ProgramsSection = () => {
       ref={sectionRef}
       className="py-12 relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50"
     >
+
+
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-10 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -114,6 +117,9 @@ const ProgramsSection = () => {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
             }`}
           >
+
+    
+
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full text-sm font-semibold mb-3 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <Sparkles className="w-4 h-4" />
               Suraj Incubator Programs
@@ -150,7 +156,7 @@ const ProgramsSection = () => {
                     <stat.icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 group-hover:text-white transition-colors duration-300">{stat.value}</h3>
-                  <p className="text-sm text-gray-600 group-hover:text-white/90 transition-colors duration-300 mt-1">{stat.label}</p>
+                  <p className="text-sm text-gray-1000 text-center group-hover:text-white/90 transition-colors duration-300 mt-1">{stat.label}</p>
                 </div>
 
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -skew-x-12 group-hover:translate-x-full transition-all duration-700"></div>
@@ -179,7 +185,7 @@ const ProgramsSection = () => {
             </div>
           </div>
 
-          {/* Programs Grid - All 3 cards visible with slightly smaller size */}
+          {/* Programs Grid */}
           <div className={`grid lg:grid-cols-3 gap-6 mb-10 transition-all duration-700 delay-400 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
@@ -205,7 +211,7 @@ const ProgramsSection = () => {
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div className="relative bg-white rounded-2xl h-full">
-                  {/* Header with Gradient - Reduced padding */}
+                  {/* Header with Gradient */}
                   <div className={`relative bg-gradient-to-r ${program.gradient} text-white p-4 overflow-hidden`}>
                     <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -mr-10 -mt-10"></div>
                     <div className="absolute bottom-0 left-0 w-16 h-16 bg-white/10 rounded-full -ml-8 -mb-8"></div>
@@ -221,9 +227,9 @@ const ProgramsSection = () => {
                     </div>
                   </div>
 
-                  {/* Content - Reduced padding and spacing */}
+                  {/* Content */}
                   <div className="p-4">
-                    {/* Duration and Fee - Reduced size */}
+                    {/* Duration and Fee */}
                     <div className="grid grid-cols-2 gap-3 mb-4">
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -245,7 +251,7 @@ const ProgramsSection = () => {
                       </div>
                     </div>
 
-                    {/* Features - Reduced spacing */}
+                    {/* Features */}
                     <div className="mb-4">
                       <h4 className="font-semibold text-gray-900 mb-2 text-sm flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-green-500" />
@@ -261,7 +267,7 @@ const ProgramsSection = () => {
                       </div>
                     </div>
 
-                    {/* CTA Button - Reduced size */}
+                    {/* CTA Button */}
                     <button className={`w-full py-2 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 ${
                       activeProgram === index
                         ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md'
@@ -276,6 +282,8 @@ const ProgramsSection = () => {
             ))}
           </div>
 
+         
+
           {/* CTA Section */}
           <div className={`bg-gradient-to-br from-gray-900 to-blue-900 rounded-2xl p-8 shadow-2xl transition-all duration-700 delay-600 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -289,7 +297,7 @@ const ProgramsSection = () => {
                 Ready to Transform Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-pink-400">Career & Business?</span>
               </h3>
               <p className="text-white/90 mb-6 max-w-2xl mx-auto">
-                Get the right skills and experience to accelerate your career & business growth
+                Get the right skills and experience to accelerate your  <span className='  font-bold'>Career & Business</span> growth
               </p>
               <button 
                 onClick={handleScheduleConsultation}

@@ -10,6 +10,7 @@ import ContactSection from "./components/pages/ContactSection.jsx";
 import WhatsAppButton from "./components/pages/WhatsAppButton.jsx";
 import PrivacyPolicy from "./components/pages/PrivacyPolicy.jsx";
 import TermsOfService from "./components/pages/TermsofService.jsx";
+import OfferingsSection from "./components/pages/OfferingsSection.jsx";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <>
             <HeroSection />
             <AboutSection />
+            <OfferingsSection />
             <ProgramsSection />
             <ServicesSection />
             <ContactSection />

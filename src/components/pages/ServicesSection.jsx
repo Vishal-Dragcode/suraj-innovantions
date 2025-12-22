@@ -53,19 +53,19 @@ const ServicesSection = () => {
   const serviceReels = [
     {
       id: 1,
-      serviceName: "Business Model",
-      videoSrc: "https://youtu.be/qA69fHFCarI?si=SeZyqEaCJGzejMsn",
+      serviceName: "CFO Learn From",
+      videoSrc: "https://youtu.be/te6LQ9U0VcA?si=LvvJC5oKglAKf8z2",
       thumbnailSrc: "https://media.istockphoto.com/id/1497817030/photo/business-growth-data-manager-improvement-vertical.jpg?s=612x612&w=0&k=20&c=0BhLsZpjNv3fNE6545__F02i1qEV7eh3ocGF7QCp8P8=",
     },
     {
       id: 2,
-      serviceName: "ERP Solutions",
-      videoSrc: "https://youtu.be/UDEW2viBydQ?si=jyeFmFOLJR-dFxMZ",
+      serviceName: "Inside a Recruiters Mind",
+      videoSrc: "https://youtu.be/qA69fHFCarI?si=p1Y45dD5HkWTrvoX",
       thumbnailSrc: "https://media.istockphoto.com/id/1483167928/video/motion-graphic-of-blue-money-icon-and-data-matrix-simulation-digital-grid-line-with.jpg?s=640x640&k=20&c=tq2_10TSHZa1rWSDzurP8B0H0vp5UUSV9Xf7B1O52po=",
     },
     {
       id: 3,
-      serviceName: "Accounting Services",
+      serviceName: "What are Emirati Accounting Students Missing?",
       videoSrc: "https://youtu.be/N3dN1UQ9NAc?si=47gNgS_2es_m8ssR",
       thumbnailSrc: "https://thumbs.dreamstime.com/b/financial-growth-arrow-money-coin-stack-d-background-financial-growth-arrow-money-coin-stack-d-background-vertical-304380937.jpg",
     },
@@ -278,10 +278,10 @@ const ServicesSection = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             {[
-              { value: "500+", label: "Setup good business model", Icon: Target, gradient: 'from-blue-500 to-cyan-500' },
-              { value: "98%", label: "Begin to SEE your business well", Icon: Star, gradient: 'from-purple-500 to-pink-500' },
-              { value: "15+", label: " Manage the business than operate the business", Icon: Award, gradient: 'from-orange-500 to-red-500' },
-              { value: "24/7", label: " Get more business hours to get more sales.", Icon: Zap, gradient: 'from-green-500 to-emerald-500' }
+              {  label: "Setup good business model", Icon: Target, gradient: 'from-blue-500 to-cyan-500' },
+              { label: "Begin to SEE your business well", Icon: Star, gradient: 'from-purple-500 to-pink-500' },
+              {  label: " Manage the business than operate the business", Icon: Award, gradient: 'from-orange-500 to-red-500' },
+              {  label: " Get more business hours to get more sales.", Icon: Zap, gradient: 'from-green-500 to-emerald-500' }
             ].map((stat, index) => (
               <div 
                 key={index}
@@ -302,7 +302,7 @@ const ServicesSection = () => {
                     <stat.Icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 group-hover:text-white transition-colors duration-300">{stat.value}</h3>
-                  <p className="text-sm text-gray-600 group-hover:text-white/90 transition-colors duration-300 mt-1">{stat.label}</p>
+                  <p className="text-sm text-gray-1000 text-center group-hover:text-white/90 transition-colors duration-300 mt-1">{stat.label}</p>
                 </div>
 
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -skew-x-12 group-hover:translate-x-full transition-all duration-700"></div>

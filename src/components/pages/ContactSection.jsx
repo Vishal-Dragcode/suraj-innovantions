@@ -170,7 +170,7 @@ const ContactSection = () => {
     {
       icon: <Clock className="w-4 h-4" />,
       title: "Working Hours",
-      content: "Mon - Fri: 9 am to 5 pm",
+      content: "Mon - Fri : 9 am to 5 pm",
       link: null,
       gradient: "from-orange-500 to-red-500"
     }

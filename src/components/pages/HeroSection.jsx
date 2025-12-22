@@ -15,9 +15,9 @@ const HeroSection = () => {
     setIsVisible(true);
     
     // Animate counters
-    const studentsTarget = 50000;
-    const coursesTarget = 45;
-    const mentorsTarget = 29;
+    const studentsTarget = 200;
+    const coursesTarget = 5;
+    const mentorsTarget = 5;
     const ratingTarget = 4.9;
     
     const duration = 2000;
@@ -100,12 +100,12 @@ const HeroSection = () => {
         <div className="flex flex-col lg:flex-row gap-8 items-center">
           {/* Left Content */}
           <div className={`flex-1 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="inline-flex items-center bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+            <div className="inline-flex items-center bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold mb-14">
               <BookOpen className="w-4 h-4 mr-2" />
-              🎓 Master real World Accounting
+              🎓 Master Real World Accounting
             </div>
             
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight text-white">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold  mb-4 leading-tight text-white">
               <span>Empowering Students,</span>
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
@@ -169,7 +169,7 @@ const HeroSection = () => {
                   </div>
                   
                   <p className="text-white/80 mb-6">
-                    Transform your career with our comprehensive courses taught by industry experts.
+                    Transform your career & business with our comprehensive courses taught by industry experts.
                   </p>
                   
                   <div className="flex justify-center">
@@ -189,7 +189,7 @@ const HeroSection = () => {
               {features.map((feature, index) => (
                 <div 
                   key={index} 
-                  className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 text-center hover:bg-white/20 transition-all"
+                  className="bg-white/10 backdrop-blur-sm rounded-lg p-2 border border-white/20 text-center hover:bg-white/20 transition-all"
                   style={{ transitionDelay: `${index * 100 + 300}ms` }}
                 >
                   <div className={`bg-gradient-to-br ${feature.gradient} p-2 rounded-lg text-white mb-2 mx-auto w-fit`}>
